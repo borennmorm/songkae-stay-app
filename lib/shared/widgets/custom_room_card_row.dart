@@ -1,135 +1,138 @@
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
 
+class CustomRoomCardRow extends StatelessWidget {
+  final String imageUrl;
+  final String title;
+  final String location;
+  final double rating;
+  final String price;
+  final VoidCallback? onTap;
 
-class RoomCardRow extends StatefulWidget {
-  const RoomCardRow({super.key});
-
-  @override
-  State<RoomCardRow> createState() => _RoomCardRowState();
-}
-
-class _RoomCardRowState extends State<RoomCardRow> {
-  bool isFavorite = false;
+  const CustomRoomCardRow({
+    super.key,
+    required this.imageUrl,
+    required this.title,
+    required this.location,
+    required this.rating,
+    required this.price,
+    this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        // Get.to(() => const RoomDetail());
-      },
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-        child: Container(
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(10),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.06),
-                blurRadius: 8,
-                offset: const Offset(0, 4),
+    return InkWell(
+      onTap: onTap,
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15.0),
+        ),
+        color: Colors.grey.withOpacity(0.2),
+        elevation: 0,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            children: [
+              // Image section
+              ClipRRect(
+                borderRadius: BorderRadius.circular(12.0),
+                child: Image.asset(
+                  imageUrl,
+                  width: 80,
+                  height: 80,
+                  fit: BoxFit.cover,
+                ),
               ),
-            ],
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(5),
-            child: SizedBox(
-              width: double.infinity,
-              height: 80,
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      Column(
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(10),
-                            child: Image.asset(
-                              'assets/images/image_1.jpg',
-                              fit: BoxFit.cover,
-                              width: 100,
-                              height: 80,
-                            ),
-                          ),
-                        ],
+              const SizedBox(width: 10),
+
+              // Text and icons section
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // Title
+                    Text(
+                      title,
+                      style: const TextStyle(
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.bold,
                       ),
-                      const SizedBox(width: 10),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            children: [
-                              Icon(
-                                Icons.location_on,
-                                color: Theme.of(context).primaryColor,
-                                size: 12,
-                              ),
-                              Text(
-                                'Phnom Penh, Cambodia',
-                                style: TextStyle(
-                                  fontSize: 12,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                              ),
-                            ],
-                          ),
-                          const Row(
-                            children: [
-                              Icon(
-                                Iconsax.star1,
-                                color: Colors.amber,
-                                size: 15,
-                              ),
-                              Text(
-                                ' 4.9',
-                                style: TextStyle(fontSize: 14),
-                              )
-                            ],
-                          ),
-                          const Text(
-                            'Room Title',
-                            style: TextStyle(
-                              fontSize: 14,
-                            ),
-                          ),
-                          const Text(
-                            '\$50.00',
-                            style: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      IconButton(
-                        icon: Icon(
-                          isFavorite ? Icons.favorite : Icons.favorite_border,
-                          color: Colors.red,
-                          size: 17,
+                    ),
+                    const SizedBox(height: 4.0),
+
+                    // Location
+                    Row(
+                      children: [
+                        const Icon(
+                          Icons.location_on,
+                          color: Colors.grey,
+                          size: 14.0,
                         ),
-                        onPressed: () {
-                          setState(() {
-                            isFavorite = !isFavorite;
-                          });
-                        },
+                        const SizedBox(width: 4.0),
+                        Text(
+                          location,
+                          style: const TextStyle(
+                            color: Colors.grey,
+                            fontSize: 12.0,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 4.0),
+
+                    // Rating and stars
+                    Row(
+                      children: [
+                        const Icon(
+                          Icons.star,
+                          color: Colors.amber,
+                          size: 16.0,
+                        ),
+                        const SizedBox(width: 4.0),
+                        Text(
+                          rating.toString(),
+                          style: const TextStyle(
+                            fontSize: 14.0,
+                            color: Colors.grey,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+
+              // Price and favorite icon section
+              Column(
+                children: [
+                  // Price container
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 8.0, vertical: 4.0),
+                    decoration: BoxDecoration(
+                      color: Colors.orangeAccent,
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                    child: Text(
+                      '\$$price',
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
                       ),
-                    ],
-                  )
+                    ),
+                  ),
+                  const SizedBox(height: 15),
+
+                  // Favorite icon
+                  const Icon(
+                    Icons.favorite_border,
+                    color: Colors.grey,
+                  ),
                 ],
               ),
-            ),
+            ],
           ),
         ),
       ),
     );
   }
 }
-

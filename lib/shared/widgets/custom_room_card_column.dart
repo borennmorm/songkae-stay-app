@@ -1,98 +1,147 @@
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
 
-class RoomCardColumn extends StatefulWidget {
-  const RoomCardColumn({super.key});
+class CustomRoomCardColumn extends StatelessWidget {
+  final String imageUrl;
+  final String location;
+  final String title;
+  final double rating;
+  final String price;
+  final double width;
+  final double height;
+  final VoidCallback? onTap;
 
-  @override
-  State<RoomCardColumn> createState() => _RoomCardColumnState();
-}
-
-class _RoomCardColumnState extends State<RoomCardColumn> {
-  bool isFavorite = false;
+  const CustomRoomCardColumn({
+    super.key,
+    required this.imageUrl,
+    required this.location,
+    required this.title,
+    required this.rating,
+    required this.price,
+    this.width = 200.0,
+    this.height = 250.0,
+    this.onTap, // Add onTap callback
+  });
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        // Get.to(() => const RoomDetail());
-      },
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
-        child: SizedBox(
-          width: 180,
+    return SizedBox(
+      width: width,
+      height: height,
+      child: GestureDetector(
+        onTap: onTap, // Trigger the onTap callback when tapped
+        child: Card(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10.0),
+          ),
+          color: Colors.grey.withOpacity(0.2),
+          elevation: 0,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(10),
-                child: Image.asset(
-                  'assets/images/image_1.jpg',
-                  fit: BoxFit.cover,
-                  width: double.infinity,
-                  height: 120,
+              Stack(
+                children: [
+                  ClipRRect(
+                    borderRadius: const BorderRadius.vertical(
+                      top: Radius.circular(12.0),
+                    ),
+                    child: Image.asset(
+                      imageUrl,
+                      height: 150,
+                      width: double.infinity,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  Positioned(
+                    bottom: 8,
+                    left: 3,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 8.0, vertical: 4.0),
+                      decoration: BoxDecoration(
+                        color: Colors.black.withOpacity(0.3),
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      child: Row(
+                        children: [
+                          const Icon(
+                            Icons.location_on,
+                            color: Colors.white,
+                            size: 16.0,
+                          ),
+                          const SizedBox(width: 4.0),
+                          Text(
+                            location,
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 12.0,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  const Positioned(
+                    top: 8,
+                    right: 8,
+                    child: Icon(
+                      Icons.favorite_border,
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      title,
+                      style: const TextStyle(
+                        fontSize: 15.0,
+                      ),
+                    ),
+                    const SizedBox(height: 4.0),
+                    Row(
+                      children: [
+                        const Icon(
+                          Icons.star,
+                          color: Colors.amber,
+                          size: 16.0,
+                        ),
+                        const SizedBox(width: 4.0),
+                        Text(
+                          rating.toString(),
+                          style: TextStyle(
+                            fontSize: 14.0,
+                            color: Colors.grey[600],
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 4.0),
+                    Row(
+                      children: [
+                        Text(
+                          price,
+                          style: const TextStyle(
+                            fontSize: 16.0,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.red,
+                          ),
+                        ),
+                        const Text(
+                          ' | month',
+                          style: TextStyle(
+                            fontSize: 15.0,
+                            color: Colors.grey,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
               ),
-              const SizedBox(height: 5),
-              Row(
-                children: [
-                  Icon(
-                    Icons.location_on,
-                    color: Theme.of(context).primaryColor,
-                    size: 12,
-                  ),
-                  Text(
-                    'Phnom Penh, Cambodia',
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: Theme.of(context).primaryColor,
-                    ),
-                  ),
-                ],
-              ),
-              const Row(
-                children: [
-                  Icon(
-                    Iconsax.star1,
-                    color: Colors.amber,
-                    size: 15,
-                  ),
-                  Text(
-                    ' 4.9',
-                    style: TextStyle(fontSize: 14),
-                  )
-                ],
-              ),
-              const Text(
-                'Room Title',
-                style: TextStyle(
-                  fontSize: 15,
-                ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text(
-                    '\$50.00',
-                    style: TextStyle(
-                      fontSize: 17,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  IconButton(
-                    icon: Icon(
-                      isFavorite ? Icons.favorite : Icons.favorite_border,
-                      color: Colors.red,
-                      size: 20,
-                    ),
-                    onPressed: () {
-                      setState(() {
-                        isFavorite = !isFavorite;
-                      });
-                    },
-                  ),
-                ],
-              )
             ],
           ),
         ),
