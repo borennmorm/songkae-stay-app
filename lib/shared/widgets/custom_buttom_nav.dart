@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:room_rental_app/features/home/home_screen.dart';
 
+import '../../features/Map/map_screen.dart';
+
 class CustomBottomNavigationBar extends StatefulWidget {
   const CustomBottomNavigationBar({super.key});
 
@@ -22,7 +24,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
   // List of pages corresponding to each index
   final List<Widget> _pages = [
     const HomeScreen(),
-    const HomeScreen(),
+    const MapScreen(),
     const HomeScreen(),
     const HomeScreen(),
   ];
