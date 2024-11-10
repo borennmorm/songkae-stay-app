@@ -123,14 +123,14 @@ class _MapScreenState extends State<MapScreen> {
         );
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('មិនមានលទ្ធផល!')), // No results in Khmer
+          const SnackBar(content: Text('មិនមានលទ្ធផល!')),
         );
       }
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
             content:
-                Text('កំហុសក្នុងការស្វែងរកទីតាំង!')), // Search error in Khmer
+                Text('កំហុសក្នុងការស្វែងរកទីតាំង!')),
       );
     }
   }

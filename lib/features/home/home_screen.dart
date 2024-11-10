@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:room_rental_app/shared/widgets/custom_profile.dart';
 import 'package:room_rental_app/shared/widgets/custom_room_card_column.dart';
 import 'package:room_rental_app/shared/widgets/custom_room_card_row.dart';
+import 'package:room_rental_app/shared/widgets/custom_room_detail.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -43,9 +44,7 @@ class HomeScreen extends StatelessWidget {
       actions: [
         IconButton(
           icon: const Icon(Icons.search),
-          onPressed: () {
-            
-          },
+          onPressed: () {},
         ),
         IconButton(
           icon: const Icon(Icons.notifications),
@@ -136,7 +135,23 @@ class sectionOne extends StatelessWidget {
                 rating: 4.5,
                 price: '\$45',
                 onTap: () {
-                  print('Card tapped');
+                  RoomDetail(
+                      images: ['assets/images/room.jpg'],
+                      title: 'Room Title',
+                      location: "location",
+                      price: 45,
+                      landlordName: "landlordName",
+                      landlordImageUrl: "landlordImageUrl",
+                      description: "description",
+                      type: "type",
+                      waterCost: "waterCost",
+                      floor: "floor",
+                      electricityCost: "electricityCost",
+                      garbageCost: "garbageCost",
+                      wifiCost: "wifiCost",
+                      bedCount: 10,
+                      bathroomCount: 10,
+                      roomSize: "roomSize");
                 },
               ),
               CustomRoomCardColumn(
@@ -146,7 +161,23 @@ class sectionOne extends StatelessWidget {
                 rating: 4.5,
                 price: '\$45',
                 onTap: () {
-                  print('Card tapped');
+                  RoomDetail(
+                      images: ['assets/images/room.jpg'],
+                      title: 'Room Title',
+                      location: "location",
+                      price: 45,
+                      landlordName: "landlordName",
+                      landlordImageUrl: "landlordImageUrl",
+                      description: "description",
+                      type: "type",
+                      waterCost: "waterCost",
+                      floor: "floor",
+                      electricityCost: "electricityCost",
+                      garbageCost: "garbageCost",
+                      wifiCost: "wifiCost",
+                      bedCount: 10,
+                      bathroomCount: 10,
+                      roomSize: "roomSize");
                 },
               ),
               CustomRoomCardColumn(
@@ -156,7 +187,23 @@ class sectionOne extends StatelessWidget {
                 rating: 4.5,
                 price: '\$45',
                 onTap: () {
-                  print('Card tapped');
+                  RoomDetail(
+                      images: ['assets/images/room.jpg'],
+                      title: 'Room Title',
+                      location: "location",
+                      price: 45,
+                      landlordName: "landlordName",
+                      landlordImageUrl: "landlordImageUrl",
+                      description: "description",
+                      type: "type",
+                      waterCost: "waterCost",
+                      floor: "floor",
+                      electricityCost: "electricityCost",
+                      garbageCost: "garbageCost",
+                      wifiCost: "wifiCost",
+                      bedCount: 10,
+                      bathroomCount: 10,
+                      roomSize: "roomSize");
                 },
               ),
             ],

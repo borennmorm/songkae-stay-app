@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:room_rental_app/features/chat/messege_screen.dart';
 import 'package:room_rental_app/features/home/home_screen.dart';
 
 import '../../features/Map/map_screen.dart';
@@ -25,7 +26,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
   final List<Widget> _pages = [
     const HomeScreen(),
     const MapScreen(),
-    const HomeScreen(),
+    const MessageScreen(),
     const HomeScreen(),
   ];
 

@@ -6,6 +6,7 @@ import 'package:room_rental_app/shared/widgets/custom_buttom_nav.dart';
 class Routes {
   static const home = '/home';
   static const map = '/map';
+  static const message = '/message';
   static const navigation = '/navigation';
 
   static List<GetPage> pages = [
