@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:room_rental_app/features/auth/login.dart';
 import 'package:room_rental_app/features/chat/messege_screen.dart';
 import 'package:room_rental_app/features/home/home_screen.dart';
 
-import '../../features/Map/map_screen.dart';
+import '../../features/map/map_screen.dart';
 
 class CustomBottomNavigationBar extends StatefulWidget {
   const CustomBottomNavigationBar({super.key});
@@ -17,23 +19,27 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
   int _selectedIndex = 0;
 
   void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
+    if (index == 3) {
+      // Navigate to UserScreen when the user icon is tapped
+      Get.to(() => const LoginScreen());
+    } else {
+      setState(() {
+        _selectedIndex = index;
+      });
+    }
   }
 
-  // List of pages corresponding to each index
+  // List of pages corresponding to each index (excluding UserScreen)
   final List<Widget> _pages = [
     const HomeScreen(),
     const MapScreen(),
     const MessageScreen(),
-    const HomeScreen(),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _pages[_selectedIndex],
+      body: _selectedIndex < 3 ? _pages[_selectedIndex] : Container(),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
@@ -51,11 +57,11 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
             label: 'Message',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Iconsax.setting_2),
-            label: 'Settings',
+            icon: Icon(Iconsax.user),
+            label: 'User',
           ),
         ],
-        selectedItemColor: Colors.blue,
+        selectedItemColor: const Color(0xFF002352),
         unselectedItemColor: Colors.grey,
         showUnselectedLabels: true,
         type: BottomNavigationBarType.fixed,
