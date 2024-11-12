@@ -26,8 +26,8 @@ class CustomRoomCardRow extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15.0),
         ),
-        color: Colors.grey.withOpacity(0.2),
-        elevation: 0,
+        color: Colors.white70,
+        elevation: 1,
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Row(
@@ -64,14 +64,14 @@ class CustomRoomCardRow extends StatelessWidget {
                       children: [
                         const Icon(
                           Icons.location_on,
-                          color: Colors.grey,
+                          color: Colors.black,
                           size: 14.0,
                         ),
                         const SizedBox(width: 4.0),
                         Text(
                           location,
                           style: const TextStyle(
-                            color: Colors.grey,
+                            color: Colors.black,
                             fontSize: 12.0,
                           ),
                         ),
@@ -109,7 +109,7 @@ class CustomRoomCardRow extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(
                         horizontal: 8.0, vertical: 4.0),
                     decoration: BoxDecoration(
-                      color: Colors.orangeAccent,
+                      color: Colors.red,
                       borderRadius: BorderRadius.circular(8.0),
                     ),
                     child: Text(

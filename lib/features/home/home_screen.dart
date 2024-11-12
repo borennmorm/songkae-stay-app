@@ -11,17 +11,33 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: customAppbar(),
-      body: const Padding(
-        padding: EdgeInsets.symmetric(horizontal: 15),
-        child: Column(
-          // Section 1
-          children: [
-            sectionOne(),
-            SizedBox(
-              height: 15,
+      body: Container(
+        height: double.infinity,
+        width: double.infinity,
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Color(0xFF002352),
+              Colors.white,
+            ],
+          ),
+        ),
+        child: const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 15),
+          child: SingleChildScrollView(
+            child: Column(
+              // Section 1
+              children: [
+                sectionOne(),
+                SizedBox(
+                  height: 15,
+                ),
+                sectionTwo(),
+              ],
             ),
-            sectionTwo(),
-          ],
+          ),
         ),
       ),
     );
@@ -41,13 +57,20 @@ class HomeScreen extends StatelessWidget {
           ),
         ],
       ),
+      backgroundColor: const Color(0xFF002352),
       actions: [
         IconButton(
-          icon: const Icon(Icons.search),
+          icon: const Icon(
+            Icons.search,
+            color: Colors.white,
+          ),
           onPressed: () {},
         ),
         IconButton(
-          icon: const Icon(Icons.notifications),
+          icon: const Icon(
+            Icons.notifications,
+            color: Colors.white,
+          ),
           onPressed: () {
             print("hello, I'm a notification!");
           },
@@ -68,14 +91,35 @@ class sectionTwo extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Text(
-          "All Popular Rooms",
+          "More Rooms",
           style: TextStyle(
             fontSize: 15,
             fontWeight: FontWeight.bold,
+            color: Colors.white,
           ),
         ),
         const SizedBox(
           height: 10,
+        ),
+        CustomRoomCardRow(
+          imageUrl: 'assets/images/room.jpg',
+          title: 'Room Title',
+          location: 'Battambang, Cambodia',
+          rating: 4.8,
+          price: '45',
+          onTap: () {
+            print('Card tapped');
+          },
+        ),
+        CustomRoomCardRow(
+          imageUrl: 'assets/images/room.jpg',
+          title: 'Room Title',
+          location: 'Battambang, Cambodia',
+          rating: 4.8,
+          price: '45',
+          onTap: () {
+            print('Card tapped');
+          },
         ),
         CustomRoomCardRow(
           imageUrl: 'assets/images/room.jpg',
@@ -117,6 +161,7 @@ class sectionOne extends StatelessWidget {
           style: TextStyle(
             fontSize: 15,
             fontWeight: FontWeight.bold,
+            color: Colors.white,
           ),
         ),
         const SizedBox(
@@ -135,7 +180,7 @@ class sectionOne extends StatelessWidget {
                 rating: 4.5,
                 price: '\$45',
                 onTap: () {
-                  RoomDetail(
+                  const RoomDetail(
                       images: ['assets/images/room.jpg'],
                       title: 'Room Title',
                       location: "location",
@@ -161,7 +206,7 @@ class sectionOne extends StatelessWidget {
                 rating: 4.5,
                 price: '\$45',
                 onTap: () {
-                  RoomDetail(
+                  const RoomDetail(
                       images: ['assets/images/room.jpg'],
                       title: 'Room Title',
                       location: "location",
@@ -187,7 +232,7 @@ class sectionOne extends StatelessWidget {
                 rating: 4.5,
                 price: '\$45',
                 onTap: () {
-                  RoomDetail(
+                  const RoomDetail(
                       images: ['assets/images/room.jpg'],
                       title: 'Room Title',
                       location: "location",

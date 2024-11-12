@@ -33,8 +33,8 @@ class CustomRoomCardColumn extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10.0),
           ),
-          color: Colors.grey.withOpacity(0.2),
-          elevation: 0,
+          color: Colors.white70,
+          elevation: 1,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -133,8 +133,8 @@ class CustomRoomCardColumn extends StatelessWidget {
                         const Text(
                           ' | month',
                           style: TextStyle(
-                            fontSize: 15.0,
-                            color: Colors.grey,
+                            fontSize: 13.0,
+                            color: Colors.black,
                           ),
                         ),
                       ],

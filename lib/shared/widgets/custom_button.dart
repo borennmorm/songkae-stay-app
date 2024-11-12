@@ -18,7 +18,7 @@ class FullWidthButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
         width: double.infinity,
-        height: 50,
+        height: 45,
         child: ElevatedButton(
           onPressed: onPressed,
           style: ElevatedButton.styleFrom(

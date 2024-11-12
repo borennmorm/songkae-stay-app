@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
-import 'package:room_rental_app/features/Map/map_screen.dart';
+import 'package:room_rental_app/features/map/map_screen.dart';
 import 'package:room_rental_app/features/home/home_screen.dart';
-import 'package:room_rental_app/shared/widgets/custom_buttom_nav.dart';
+import 'package:room_rental_app/shared/widgets/custom_bottom_nav.dart';
 
 class Routes {
   static const home = '/home';
