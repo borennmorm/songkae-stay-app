@@ -6,11 +6,11 @@ class SearchBars extends StatelessWidget {
   final Function(String) onTextChanged;
 
   const SearchBars({
-    Key? key,
+    super.key,
     required this.controller,
     required this.onSearch,
     required this.onTextChanged,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class SearchBars extends StatelessWidget {
           BoxShadow(
             color: Colors.black.withOpacity(0.1),
             blurRadius: 10,
-            offset: Offset(0, 4),
+            offset: const Offset(0, 4),
           ),
         ],
       ),
@@ -34,10 +34,10 @@ class SearchBars extends StatelessWidget {
             child: TextField(
               controller: controller,
               style: const TextStyle(color: Colors.black87),
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 hintText: 'Search Location',
                 border: InputBorder.none,
-                hintStyle: const TextStyle(color: Colors.grey),
+                hintStyle: TextStyle(color: Colors.grey),
               ),
               onChanged: onTextChanged,
             ),
