@@ -33,7 +33,7 @@ class CustomRoomCardColumn extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10.0),
           ),
-          color: Colors.white70,
+          color: Colors.white,
           elevation: 1,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

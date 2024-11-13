@@ -26,7 +26,7 @@ class CustomRoomCardRow extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15.0),
         ),
-        color: Colors.white70,
+        color: Colors.white,
         elevation: 1,
         child: Padding(
           padding: const EdgeInsets.all(8.0),

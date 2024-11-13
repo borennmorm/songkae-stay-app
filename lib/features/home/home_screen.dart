@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:room_rental_app/features/post/post_detail.dart';
 import 'package:room_rental_app/shared/widgets/custom_profile.dart';
 import 'package:room_rental_app/shared/widgets/custom_room_card_column.dart';
 import 'package:room_rental_app/shared/widgets/custom_room_card_row.dart';
 import 'package:room_rental_app/shared/widgets/custom_room_detail.dart';
+
+import '../../shared/widgets/custom_google_map.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -20,9 +21,9 @@ class HomeScreen extends StatelessWidget {
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
+            end: Alignment.bottomLeft,
             colors: [
-              Color(0xFF002352),
+              Color.fromRGBO(180, 206, 242, 1),
               Colors.white,
             ],
           ),
@@ -67,7 +68,10 @@ class HomeScreen extends StatelessWidget {
             Icons.search,
             color: Colors.white,
           ),
-          onPressed: () {},
+          onPressed: () {
+            print("map");
+            MapViews();
+          },
         ),
         IconButton(
           icon: const Icon(

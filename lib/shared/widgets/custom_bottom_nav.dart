@@ -4,8 +4,7 @@ import 'package:iconsax/iconsax.dart';
 import 'package:room_rental_app/features/auth/login.dart';
 import 'package:room_rental_app/features/chat/messege_screen.dart';
 import 'package:room_rental_app/features/home/home_screen.dart';
-
-import '../../features/map/map_screen.dart';
+import 'package:room_rental_app/shared/widgets/custom_google_map.dart';
 
 class CustomBottomNavigationBar extends StatefulWidget {
   const CustomBottomNavigationBar({super.key});
@@ -32,7 +31,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
   // List of pages corresponding to each index (excluding UserScreen)
   final List<Widget> _pages = [
     const HomeScreen(),
-    const MapScreen(),
+    MapViews(),
     const MessageScreen(),
   ];
 
@@ -61,11 +60,11 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
             label: 'User',
           ),
         ],
-        selectedItemColor: const Color(0xFF002352),
+        selectedItemColor: Colors.red,
         unselectedItemColor: Colors.grey,
         showUnselectedLabels: true,
         type: BottomNavigationBarType.fixed,
-        backgroundColor: Colors.white,
+        backgroundColor: Color(0xFF002352),
       ),
     );
   }

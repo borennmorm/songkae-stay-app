@@ -11,7 +11,7 @@ class PostDetailScreen extends StatefulWidget {
 class _PostDetailScreenState extends State<PostDetailScreen> {
   @override
   Widget build(BuildContext context) {
-       final screenHeight = MediaQuery.of(context).size.height;
+      final screenHeight = MediaQuery.of(context).size.height;
 
     // Sample list of images
     final List<String> images = [
