@@ -25,7 +25,7 @@ class RoomDetail extends StatelessWidget {
   final String roomSize;
 
   const RoomDetail({
-    Key? key,
+    super.key,
     required this.images,
     required this.title,
     required this.location,
@@ -42,7 +42,7 @@ class RoomDetail extends StatelessWidget {
     required this.bedCount,
     required this.bathroomCount,
     required this.roomSize,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -222,7 +222,7 @@ class RoomDetail extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              Spacer(),
+                              const Spacer(),
                               IconButton(
                                 icon: Icon(CupertinoIcons.phone_fill,
                                     color: Theme.of(context).primaryColor),
@@ -349,7 +349,7 @@ class RoomDetail extends StatelessWidget {
                           ),
                           MapView(
                             mapController: MapController(),
-                            markers: [],
+                            markers: const [],
                           ),
                           Divider(color: Colors.grey.withOpacity(0.4)),
                           const Text("Location",

@@ -6,10 +6,10 @@ class MarkerInfo extends StatelessWidget {
   final List<String> images;
 
   const MarkerInfo({
-    Key? key,
+    super.key,
     required this.name,
     required this.images,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

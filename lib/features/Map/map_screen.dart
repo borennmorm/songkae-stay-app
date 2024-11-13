@@ -29,8 +29,8 @@ class _MapScreenState extends State<MapScreen> {
         children: [
           FlutterMap(
             mapController: mapController,
-            options: MapOptions(
-              initialCenter: const LatLng(13.090204, 103.208514),
+            options: const MapOptions(
+              initialCenter: LatLng(13.090204, 103.208514),
               initialZoom: 13.0,
             ),
             children: [

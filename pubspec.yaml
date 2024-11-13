@@ -20,6 +20,13 @@ dependencies:
   latlong2: ^0.9.1
   flutter_slidable: ^3.1.1
   smooth_page_indicator: ^1.2.0+3
+  flutter_launcher_icons: ^0.14.1
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/sangkaestay.png"
+  min_sdk_android: 21
 
 dev_dependencies:
   flutter_test:
@@ -30,6 +37,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/
+    - assets/images/sangkaestay.png
   fonts:
     - family: NotoSansKhmer
       fonts:

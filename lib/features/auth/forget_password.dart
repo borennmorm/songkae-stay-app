@@ -1,18 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:room_rental_app/features/auth/forget_password.dart';
+import 'package:room_rental_app/features/auth/register.dart';
 import 'package:room_rental_app/shared/widgets/custom_button.dart';
 import 'package:room_rental_app/shared/widgets/custom_textfield.dart';
 
-import 'register.dart';
-
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+class ForgetPasswordScreen extends StatelessWidget {
+  const ForgetPasswordScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     final TextEditingController emailController = TextEditingController();
-    final TextEditingController passwordController = TextEditingController();
 
     return Scaffold(
       appBar: AppBar(
@@ -54,64 +51,56 @@ class LoginScreen extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 25),
             child: Column(
+              mainAxisAlignment:
+                  MainAxisAlignment.spaceBetween, // Space between the content
               children: [
-                Image.asset(
-                  'assets/images/logo.png',
-                  width: 100,
-                ),
-                const Text(
-                  'SongkaeStay',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                  ),
-                ),
-                const Text(
-                  'Welcome back!\nYou\'ve been missed.',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.white54,
-                  ),
-                ),
-                const SizedBox(height: 10),
-                MyTextField(
-                  controller: emailController,
-                  hintText: 'Enter your email',
-                  labelText: 'Email',
-                  isPassword: false,
-                ),
-                const SizedBox(height: 10),
-                MyTextField(
-                  controller: passwordController,
-                  hintText: 'Enter your password',
-                  labelText: 'Password',
-                  isPassword: true,
-                ),
-                TextButton(
-                  onPressed: () {
-                    Get.to(() => const ForgetPasswordScreen());
-                  },
-                  child: const Text(
-                    "Forget Password?",
-                    style: TextStyle(
-                      color: Color(0xFF002352),
+                // Form content
+                Column(
+                  children: [
+                    Image.asset(
+                      'assets/images/logo.png',
+                      width: 100,
                     ),
-                  ),
+                    const Text(
+                      'SongkaeStay',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                      ),
+                    ),
+                    const Text(
+                      'Enter your email to reset password\nPlease check your email.',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.white54,
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    MyTextField(
+                      controller: emailController,
+                      hintText: 'Enter your email',
+                      labelText: 'Email',
+                      isPassword: false,
+                    ),
+                    const SizedBox(height: 20),
+                    FullWidthButton(
+                      onPressed: () {},
+                      text: 'Submit',
+                      color: const Color(0xFF002352),
+                      textColor: Colors.white,
+                    ),
+                  ],
                 ),
-                FullWidthButton(
-                  onPressed: () {},
-                  text: 'login',
-                  color: const Color(0xFF002352),
-                  textColor: Colors.white,
-                ),
-                const SizedBox(
-                  height: 150,
-                ),
+
+                // Spacer to push the register row to the bottom
+                const SizedBox(height: 20),
+
+                // Row with "Register" text at the bottom
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text('Don\' have an account yet?'),
+                    const Text('Don\'t have an account yet?'),
                     TextButton(
                       child: const Text(
                         'Register',
@@ -122,9 +111,9 @@ class LoginScreen extends StatelessWidget {
                       onPressed: () {
                         Get.to(() => const RegisterScreen());
                       },
-                    )
+                    ),
                   ],
-                )
+                ),
               ],
             ),
           ),
