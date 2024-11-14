@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:get/get.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
 import 'package:latlong2/latlong.dart';
+import 'package:room_rental_app/features/booking/booking_screen.dart';
 import 'package:room_rental_app/shared/widgets/custom_button.dart';
 import 'package:room_rental_app/shared/widgets/custom_room_feature.dart';
 import 'package:room_rental_app/shared/widgets/property_infortmation.dart';
@@ -89,7 +91,7 @@ class Article extends StatelessWidget {
                       const SizedBox(height: 10),
                       FullWidthButton(
                         onPressed: () {
-                          // Get.to(() => const BookingUrDate());
+                          Get.to(() => const BookingScreen());
                         },
                         text: 'Book Now',
                         color: const Color(0xFF002352),

@@ -25,25 +25,23 @@ class RoomFeature extends StatelessWidget {
 
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 15),
-      child: Container(
-        child: GridView.builder(
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3,
-            childAspectRatio: 1.3,
-          ),
-          itemCount: basicInfoList.length,
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
-          padding: EdgeInsets.zero,
-          itemBuilder: (context, index) {
-            final item = basicInfoList[index];
-            return BasicInfoComponent(
-              icon: item['icon'] as IconData,
-              labelText: item['labelText'] as String,
-              valueText: item['valueText'] as String,
-            );
-          },
+      child: GridView.builder(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 3,
+          childAspectRatio: 1.3,
         ),
+        itemCount: basicInfoList.length,
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
+        padding: EdgeInsets.zero,
+        itemBuilder: (context, index) {
+          final item = basicInfoList[index];
+          return BasicInfoComponent(
+            icon: item['icon'] as IconData,
+            labelText: item['labelText'] as String,
+            valueText: item['valueText'] as String,
+          );
+        },
       ),
     );
   }

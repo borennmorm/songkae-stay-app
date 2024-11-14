@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:iconsax/iconsax.dart';
 
 class CustomRoomCardRow extends StatelessWidget {
   final String imageUrl;
@@ -124,7 +125,8 @@ class CustomRoomCardRow extends StatelessWidget {
 
                   // Favorite icon
                   const Icon(
-                    Icons.favorite_border,
+                    Iconsax.heart,
+                    size: 20,
                     color: Colors.grey,
                   ),
                 ],

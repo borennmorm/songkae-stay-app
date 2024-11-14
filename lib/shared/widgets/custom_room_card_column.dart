@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:iconsax/iconsax.dart';
 
 class CustomRoomCardColumn extends StatelessWidget {
   final String imageUrl;
@@ -17,8 +18,8 @@ class CustomRoomCardColumn extends StatelessWidget {
     required this.title,
     required this.rating,
     required this.price,
-    this.width = 200.0,
-    this.height = 250.0,
+    this.width = 250.0,
+    this.height = 280.0,
     this.onTap, // Add onTap callback
   });
 
@@ -46,14 +47,14 @@ class CustomRoomCardColumn extends StatelessWidget {
                     ),
                     child: Image.asset(
                       imageUrl,
-                      height: 150,
+                      height: 180,
                       width: double.infinity,
                       fit: BoxFit.cover,
                     ),
                   ),
                   Positioned(
-                    bottom: 8,
-                    left: 3,
+                    bottom: 10,
+                    left: 10,
                     child: Container(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 8.0, vertical: 4.0),
@@ -84,7 +85,7 @@ class CustomRoomCardColumn extends StatelessWidget {
                     top: 8,
                     right: 8,
                     child: Icon(
-                      Icons.favorite_border,
+                      Iconsax.heart,
                       color: Colors.white,
                     ),
                   ),

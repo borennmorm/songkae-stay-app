@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:room_rental_app/features/post/post_detail.dart';
 import 'package:room_rental_app/shared/widgets/custom_profile.dart';
 import 'package:room_rental_app/shared/widgets/custom_room_card_column.dart';
@@ -15,32 +16,19 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: customAppbar(),
-      body: Container(
-        height: double.infinity,
-        width: double.infinity,
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomLeft,
-            colors: [
-              Color.fromRGBO(180, 206, 242, 1),
-              Colors.white,
+      backgroundColor: const Color(0xFFF5F6F8),
+      body: const Padding(
+        padding: EdgeInsets.symmetric(horizontal: 15),
+        child: SingleChildScrollView(
+          child: Column(
+            // Section 1
+            children: [
+              sectionOne(),
+              SizedBox(
+                height: 15,
+              ),
+              sectionTwo(),
             ],
-          ),
-        ),
-        child: const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 15),
-          child: SingleChildScrollView(
-            child: Column(
-              // Section 1
-              children: [
-                sectionOne(),
-                SizedBox(
-                  height: 15,
-                ),
-                sectionTwo(),
-              ],
-            ),
           ),
         ),
       ),
@@ -50,23 +38,40 @@ class HomeScreen extends StatelessWidget {
   // AppBar
   AppBar customAppbar() {
     return AppBar(
+      backgroundColor: const Color(0xFFF5F6F8),
       title: Row(
         children: [
-          ProfileImage(
-            imageUrl: 'assets/images/user_profile.jpg',
-            onTap: () {
-              // Handle tap
-              print("Profile image clicked!");
-            },
+          Container(
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              border: Border.all(
+                color: Colors.white,
+                width: 1.0,
+              ),
+              boxShadow: const [
+                BoxShadow(
+                  color: Colors.black12,
+                  blurRadius: 2.0,
+                  spreadRadius: 1.0,
+                  offset: Offset(0, 1),
+                ),
+              ],
+            ),
+            child: ProfileImage(
+              imageUrl: 'assets/images/user_profile.jpg',
+              onTap: () {
+                // Handle tap
+                print("Profile image clicked!");
+              },
+            ),
           ),
         ],
       ),
-      backgroundColor: const Color(0xFF002352),
       actions: [
         IconButton(
           icon: const Icon(
-            Icons.search,
-            color: Colors.white,
+            Iconsax.search_normal4,
+            size: 23,
           ),
           onPressed: () {
             print("map");
@@ -75,8 +80,8 @@ class HomeScreen extends StatelessWidget {
         ),
         IconButton(
           icon: const Icon(
-            Icons.notifications,
-            color: Colors.white,
+            Iconsax.notification,
+            size: 23,
           ),
           onPressed: () {
             print("hello, I'm a notification!");
@@ -100,13 +105,8 @@ class sectionTwo extends StatelessWidget {
         const Text(
           "More Rooms",
           style: TextStyle(
-            fontSize: 15,
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
+            fontSize: 17,
           ),
-        ),
-        const SizedBox(
-          height: 10,
         ),
         CustomRoomCardRow(
           imageUrl: 'assets/images/room.jpg',
@@ -167,14 +167,10 @@ class sectionOne extends StatelessWidget {
         const Text(
           "All Popular Rooms",
           style: TextStyle(
-            fontSize: 15,
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
+            fontSize: 17,
           ),
         ),
-        const SizedBox(
-          height: 10,
-        ),
+
         // Filter
         // Column
         SingleChildScrollView(
