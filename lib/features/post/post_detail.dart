@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:get/get.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
 import 'package:latlong2/latlong.dart';
@@ -142,7 +143,7 @@ class Introduction extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(top: 2),
                   child: Icon(
-                    CupertinoIcons.location_solid,
+                    Iconsax.location5,
                     size: 15,
                     color: Color(0xFF002352),
                   ),
@@ -167,16 +168,15 @@ class Introduction extends StatelessWidget {
             Row(
               children: [
                 Icon(
-                  Icons.star,
+                  Iconsax.star,
                   color: Colors.amber,
-                  size: 17.0,
+                  size: 16.0,
                 ),
                 SizedBox(width: 4.0),
                 Text(
                   '4.5',
                   style: TextStyle(
                     fontSize: 17.0,
-                    color: Colors.grey,
                   ),
                 ),
               ],
@@ -326,7 +326,7 @@ class LandlordProfile extends StatelessWidget {
                 child: IconButton(
                   onPressed: () {},
                   icon: const Icon(
-                    CupertinoIcons.phone_fill,
+                    Iconsax.call, // Use Iconsax call icon
                     color: Color(0xFF002352),
                   ),
                 ),
@@ -343,7 +343,7 @@ class LandlordProfile extends StatelessWidget {
                 child: IconButton(
                   onPressed: () {},
                   icon: const Icon(
-                    CupertinoIcons.chat_bubble_text_fill,
+                    Iconsax.message, // Use Iconsax message icon
                     color: Color(0xFF002352),
                   ),
                 ),

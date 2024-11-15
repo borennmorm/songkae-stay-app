@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:room_rental_app/shared/widgets/custom_bottom_nav.dart';
+import 'package:room_rental_app/shared/widgets/tenant_loggon_bottom_nav.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -40,7 +41,7 @@ class _SplashScreenState extends State<SplashScreen>
 
     // Navigate to the next screen after 2 seconds
     Timer(const Duration(seconds: 5), () {
-      Get.offAll(() => const CustomBottomNavigationBar());
+      Get.offAll(() => const TenantLoggonBottomNav());
     });
   }
 

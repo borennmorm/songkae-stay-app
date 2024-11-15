@@ -9,13 +9,13 @@ class Routes {
   static const home = '/home';
   static const map = '/map';
   static const message = '/message';
-  static const navigation = '/navigation';
+  static const default_navigation = '/navigation';
   static const splash = '/splash';
 
   static List<GetPage> pages = [
     GetPage(name: home, page: () => const MapScreen()),
     GetPage(name: map, page: () => const HomeScreen()),
-    GetPage(name: navigation, page: () => const CustomBottomNavigationBar()),
+    GetPage(name: default_navigation, page: () => const CustomBottomNavigationBar()),
     GetPage(name: splash, page: () => const SplashScreen()),
   ];
 }
