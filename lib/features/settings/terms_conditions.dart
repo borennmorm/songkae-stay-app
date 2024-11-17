@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:room_rental_app/shared/widgets/custom_language_card.dart';
 
-class AccountTypeScreen extends StatelessWidget {
-  const AccountTypeScreen({super.key});
+class TermsScreen extends StatelessWidget {
+  const TermsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Switch Account',
+          'Term & Conditions',
           style: TextStyle(
             fontSize: 18,
           ),

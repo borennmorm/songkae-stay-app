@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:room_rental_app/shared/widgets/custom_language_card.dart';
+import 'package:room_rental_app/shared/widgets/custom_row_icon_button.dart';
 
-class TermsScreen extends StatelessWidget {
-  const TermsScreen({super.key});
+class AccountTypeScreen extends StatelessWidget {
+  const AccountTypeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -37,11 +38,15 @@ class TermsScreen extends StatelessWidget {
       ),
       backgroundColor: const Color(0xFFF5F6F8),
       body: const Padding(
-        padding: EdgeInsets.all(10.0),
-        child: Center(
-          child: Text('Coming Soon'),
-        ),
-      ),
+          padding: EdgeInsets.all(10.0),
+          child: Column(
+            children: [
+              CustomRowIconButton(
+                icon: Icons.home,
+                languageName: 'Landlord',
+              ),
+            ],
+          )),
     );
   }
 }

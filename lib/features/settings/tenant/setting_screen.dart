@@ -2,13 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart'; // Added import for Iconsax
 import 'package:room_rental_app/features/auth/register.dart';
-import 'package:room_rental_app/features/settings/tenant/profile_screen.dart';
+import 'package:room_rental_app/features/settings/profile_screen.dart';
 import 'package:room_rental_app/shared/widgets/custom_button.dart';
 
-import 'account_type_screen.dart';
+import '../about_us.dart';
+import '../account_type_screen.dart';
+import '../privacy_policy.dart';
+import '../terms_conditions.dart';
 import 'dashboard_screen.dart';
 import 'favorite_screen.dart';
-import 'language_screen.dart';
+import '../language_screen.dart';
+import 'support.dart';
 import 'tsbooking_screen.dart';
 
 class TenantSettingsScreen extends StatelessWidget {
@@ -90,24 +94,32 @@ class TenantSettingsScreen extends StatelessWidget {
                 },
               ),
               _buildSettingsOption(
-                icon: Iconsax.shield_tick, // Updated icon
+                icon: Iconsax.shield_tick,
                 text: 'Privacy Policy',
-                onTap: () {},
+                onTap: () {
+                  Get.to(() => const PrivacyPolicyScreen());
+                },
               ),
               _buildSettingsOption(
-                icon: Iconsax.book, // Updated icon
+                icon: Iconsax.book,
                 text: 'Terms and Conditions',
-                onTap: () {},
+                onTap: () {
+                  Get.to(() => const TermsScreen());
+                },
               ),
               _buildSettingsOption(
-                icon: Iconsax.info_circle, // Updated icon
+                icon: Iconsax.info_circle,
                 text: 'About Us',
-                onTap: () {},
+                onTap: () {
+                  Get.to(() => const AboutUsScreen());
+                },
               ),
               _buildSettingsOption(
-                icon: Iconsax.support, // Updated icon for Support
+                icon: Iconsax.support,
                 text: 'Support',
-                onTap: () {},
+                onTap: () {
+                  Get.to(() => const SupportScreen());
+                },
               ),
               const SizedBox(height: 15),
 
