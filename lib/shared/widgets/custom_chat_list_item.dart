@@ -4,7 +4,7 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
-import '../../features/chat/chat_screen.dart';
+import '../../features/chat/message_screen.dart';
 
 
 class ChatListItem extends StatelessWidget {
@@ -71,7 +71,7 @@ class ChatListItem extends StatelessWidget {
                   child: ListTile(
                     contentPadding: EdgeInsets.zero,
                     onTap: () {
-                      Get.to(() => const ChatScreen());
+                      Get.to(() => const MessagesScreen());
                     },
                     title: Text(
                       name,

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:room_rental_app/features/auth/login.dart';
-import 'package:room_rental_app/features/chat/messege_screen.dart';
+import 'package:room_rental_app/features/chat/chat_screen.dart';
 import 'package:room_rental_app/features/home/home_screen.dart';
 import 'package:room_rental_app/shared/widgets/custom_google_map.dart';
 
@@ -32,7 +32,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
   final List<Widget> _pages = [
     const HomeScreen(),
     MapViews(),
-    const MessageScreen(),
+    const ChatScreen(),
   ];
 
   @override

@@ -1,41 +1,46 @@
-// lib/widgets/search_bar.dart
 import 'package:flutter/material.dart';
+import 'package:iconsax/iconsax.dart';
 
-class SearchBarChat extends StatelessWidget {
-  const SearchBarChat({super.key});
+class SearchButton extends StatelessWidget {
+  final VoidCallback? onPressed;
+
+  const SearchButton({super.key, this.onPressed});
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: const BorderRadius.all(Radius.circular(12)),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.06),
-              spreadRadius: 2,
-              blurRadius: 4,
-              offset: const Offset(0, 2),
-            ),
-          ],
-        ),
-        child: const TextField(
-          decoration: InputDecoration(
-            prefixIcon: Icon(Icons.search_rounded, color: Colors.grey),
-            hintText: 'Search message...',
-            fillColor: Colors.white,
-            filled: true,
-            hintStyle: TextStyle(color: Colors.grey),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(12)),
-              borderSide: BorderSide.none,
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(width: 1.0, color: Colors.grey),
-              borderRadius: BorderRadius.all(Radius.circular(12)),
-            ),
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: onPressed,
+        borderRadius: BorderRadius.circular(30),
+        child: Container(
+          width: double.infinity,
+          padding: const EdgeInsets.symmetric(
+            horizontal: 10,
+            vertical: 12,
+          ),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15),
+            color: const Color(0xFF002352).withOpacity(0.2),
+          ),
+          child: const Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(
+                Icons.search,
+                color: Color(0xFF002352),
+                size: 24,
+              ),
+              SizedBox(width: 8),
+              Text(
+                'Search',
+                style: TextStyle(
+                  color: Color(0xFF002352),
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ],
           ),
         ),
       ),

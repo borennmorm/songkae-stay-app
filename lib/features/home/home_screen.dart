@@ -42,29 +42,28 @@ class HomeScreen extends StatelessWidget {
       title: Row(
         children: [
           Container(
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              border: Border.all(
-                color: Colors.white,
-                width: 1.0,
-              ),
-              boxShadow: const [
-                BoxShadow(
-                  color: Colors.black12,
-                  blurRadius: 2.0,
-                  spreadRadius: 1.0,
-                  offset: Offset(0, 1),
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                border: Border.all(
+                  color: Colors.white,
+                  width: 1.0,
                 ),
-              ],
-            ),
-            child: ProfileImage(
-              imageUrl: 'assets/images/user_profile.jpg',
-              onTap: () {
-                // Handle tap
-                print("Profile image clicked!");
-              },
-            ),
-          ),
+                boxShadow: const [
+                  BoxShadow(
+                    color: Colors.black12,
+                    blurRadius: 2.0,
+                    spreadRadius: 1.0,
+                    offset: Offset(0, 1),
+                  ),
+                ],
+              ),
+              child: ProfileImage(
+                imageUrl: 'https://i.postimg.cc/g25VYN7X/user-1.png',
+                onTap: () {
+                  // Handle the tap event
+                  print('Profile image tapped!');
+                },
+              )),
         ],
       ),
       actions: [

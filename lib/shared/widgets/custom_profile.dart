@@ -11,7 +11,7 @@ class ProfileImage extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: ClipOval(
-        child: Image.asset(
+        child: Image.network(
           imageUrl,
           width: 30.0,
           height: 30.0,

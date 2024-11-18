@@ -1,6 +1,10 @@
+// lib/message_screen.dart
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
+import 'package:room_rental_app/shared/widgets/chat_card.dart';
+import 'package:room_rental_app/shared/widgets/custom_search_chat.dart';
+
+import 'message_screen.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key});
@@ -10,140 +14,117 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
-  final TextEditingController _controller = TextEditingController();
-  final List<String> _messages = [];
+  int _selectedIndex = 0;
+  bool isDarkMode = false;
 
-  void _sendMessage() {
-    if (_controller.text.isNotEmpty) {
-      setState(() {
-        _messages.add(_controller.text);
-      });
-      _controller.clear();
-    }
+  // Switch between pages based on selected index
+  void _onTabSelected(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  // Toggle between light and dark theme
+  void toggleTheme() {
+    setState(() {
+      isDarkMode = !isDarkMode;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: Colors.white,
-        body: Column(
-          children: [
-            Column(
+    return Scaffold(
+      // backgroundColor: Colors.white,
+      appBar: AppBar(
+        centerTitle: false,
+        elevation: 0,
+        automaticallyImplyLeading: false,
+        title: SearchButton(
+          onPressed: () {
+            print('Search button pressed');
+          },
+        ),
+      ),
+      body: Column(
+        children: [
+          // Custom Tab Buttons (Recent Message and Active)
+          Container(
+            padding: const EdgeInsets.fromLTRB(16.0, 0, 16.0, 16.0),
+            child: Row(
               children: [
-                Row(
-                  children: [
-                    IconButton(
-                      icon: const Icon(Iconsax.arrow_left_2),
-                      color: Theme.of(context).primaryColor,
-                      onPressed: () {
-                        Get.back();
-                      },
-                    ),
-                    Expanded(
-                      child: Row(
-                        children: [
-                          ClipOval(
-                            child: Image.network(
-                              'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?cs=srgb&dl=pexels-pixabay-220453.jpg&fm=jpg',
-                              fit: BoxFit.cover,
-                              width: 40,
-                              height: 40,
-                            ),
-                          ),
-                          const SizedBox(width: 10),
-                          const Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "Ryan Romb",
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 15,
-                                ),
-                              ),
-                              Text("Online",
-                                  style: TextStyle(
-                                      color: Colors.green, fontSize: 12))
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                    IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          Iconsax.call,
-                        )),
-                    const SizedBox(width: 10),
-                  ],
+                FillOutlineButton(
+                  press: () => _onTabSelected(0),
+                  text: "Recent Messages",
+                  isFilled: _selectedIndex == 0,
+                ),
+                const SizedBox(width: 10),
+                FillOutlineButton(
+                  press: () => _onTabSelected(1),
+                  text: "Active",
+                  isFilled: _selectedIndex == 1,
                 ),
               ],
             ),
-            Expanded(
-              child: ListView.builder(
-                itemCount: _messages.length,
-                itemBuilder: (context, index) {
-                  bool isMe = index % 2 == 0;
-                  return Align(
-                    alignment:
-                        isMe ? Alignment.centerRight : Alignment.centerLeft,
-                    child: Container(
-                      margin: isMe
-                          ? const EdgeInsets.only(left: 50, right: 10, top: 20)
-                          : const EdgeInsets.only(right: 50, left: 10, top: 20),
-                      padding: const EdgeInsets.all(12),
-                      decoration: BoxDecoration(
-                        border: const Border.fromBorderSide(
-                            BorderSide(color: Colors.grey, width: 0.5)),
-                        color: isMe
-                            ? const Color.fromARGB(190, 13, 9, 65)
-                            : Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Text(
-                        _messages[index],
-                        style: TextStyle(
-                            color: isMe ? Colors.white : Colors.black),
-                      ),
+          ),
+          // Display selected content based on the selected tab
+          Expanded(
+            child: _selectedIndex == 0
+                ? ListView.builder(
+                    itemCount: chatsData.length,
+                    itemBuilder: (context, index) => ChatCard(
+                      chat: chatsData[index],
+                      press: () {
+                        Get.to(() => const MessagesScreen());
+                      },
                     ),
-                  );
-                },
-              ),
-            ),
-            Container(
-              margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 0),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                border:
-                    const Border.fromBorderSide(BorderSide(color: Colors.grey)),
-              ),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: TextField(
-                      controller: _controller,
-                      style: const TextStyle(color: Colors.black),
-                      keyboardType: TextInputType.multiline,
-                      decoration: const InputDecoration(
-                          hintText: "Write your message...",
-                          border: InputBorder.none,
-                          hintStyle: TextStyle(color: Colors.black)),
-                    ),
+                  )
+                : ListView.builder(
+                    itemCount: chatsData
+                        .where((chat) => chat.isActive)
+                        .toList()
+                        .length,
+                    itemBuilder: (context, index) {
+                      var activeChats =
+                          chatsData.where((chat) => chat.isActive).toList();
+                      return ChatCard(
+                        chat: activeChats[index],
+                        press: () {},
+                      );
+                    },
                   ),
-                  IconButton(
-                    icon: Icon(
-                      Iconsax.send1,
-                      color: Theme.of(context).primaryColor,
-                    ),
-                    onPressed: _sendMessage,
-                  ),
-                ],
-              ),
-            ),
-          ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class FillOutlineButton extends StatelessWidget {
+  const FillOutlineButton({
+    super.key,
+    this.isFilled = true,
+    required this.press,
+    required this.text,
+  });
+
+  final bool isFilled;
+  final VoidCallback press;
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialButton(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(30),
+      ),
+      elevation: 0,
+      color: const Color(0xFF002352).withOpacity(0.2),
+      onPressed: press,
+      child: Text(
+        text,
+        style: const TextStyle(
+          color: Color(0xFF002352),
+          fontSize: 12,
         ),
       ),
     );

@@ -25,17 +25,28 @@ dependencies:
   google_maps_flutter: ^2.9.0
   permission_handler: ^11.3.1
   table_calendar: ^3.1.2
-
-flutter_launcher_icons:
-  android: "launcher_icon"
-  ios: true
-  image_path: "assets/images/sangkaestay.png"
-  min_sdk_android: 21
+  flutter_native_splash: ^2.4.3
+  font_awesome_flutter: ^10.8.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^4.0.0
+  flutter_launcher_icons: "^0.14.1"
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/sangkaestay.png"
+
+flutter_native_splash:  
+  android: true
+  ios: true
+  web: false
+
+  background_image: "assets/images/background.png"
+  image: "assets/images/logo.png"
+  branding: "assets/images/name_no_bg.png"
 
 flutter:
   uses-material-design: true
@@ -46,34 +57,3 @@ flutter:
     - family: NotoSansKhmer
       fonts:
         - asset: assets/fonts/NotoSansKhmer-Regular.ttf
-
-  
-  
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
