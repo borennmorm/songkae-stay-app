@@ -20,7 +20,7 @@ class _TenantLoggonBottomNavState extends State<TenantLoggonBottomNav> {
     const HomeScreen(),
     MapViews(),
     const ChatScreen(),
-    const TenantSettingsScreen(), 
+    const TenantSettingsScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -53,12 +53,12 @@ class _TenantLoggonBottomNavState extends State<TenantLoggonBottomNav> {
             label: 'Setting',
           ),
         ],
-        selectedItemColor: Colors.white,
+        selectedItemColor: const Color(0xFF002352),
         unselectedItemColor: Colors.grey,
         showUnselectedLabels: true,
         type: BottomNavigationBarType.fixed,
-        backgroundColor: const Color(0xFF002352),
-        onTap: _onItemTapped, 
+        backgroundColor: Colors.white,
+        onTap: _onItemTapped,
       ),
     );
   }

@@ -16,19 +16,31 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: customAppbar(),
-      backgroundColor: const Color(0xFFF5F6F8),
-      body: const Padding(
-        padding: EdgeInsets.symmetric(horizontal: 15),
-        child: SingleChildScrollView(
-          child: Column(
-            // Section 1
-            children: [
-              sectionOne(),
-              SizedBox(
-                height: 15,
-              ),
-              sectionTwo(),
+      // backgroundColor: const Color(0xFFF5F6F8),
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Color.fromARGB(218, 0, 36, 82),
+              Color.fromARGB(255, 230, 236, 241)
             ],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
+        ),
+        child: const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 15),
+          child: SingleChildScrollView(
+            child: Column(
+              // Section 1
+              children: [
+                sectionOne(),
+                SizedBox(
+                  height: 15,
+                ),
+                sectionTwo(),
+              ],
+            ),
           ),
         ),
       ),
@@ -38,7 +50,7 @@ class HomeScreen extends StatelessWidget {
   // AppBar
   AppBar customAppbar() {
     return AppBar(
-      backgroundColor: const Color(0xFFF5F6F8),
+      backgroundColor: const Color.fromARGB(218, 0, 36, 82),
       title: Row(
         children: [
           Container(
@@ -71,6 +83,7 @@ class HomeScreen extends StatelessWidget {
           icon: const Icon(
             Iconsax.search_normal4,
             size: 23,
+            color: Colors.white,
           ),
           onPressed: () {
             print("map");
@@ -81,6 +94,7 @@ class HomeScreen extends StatelessWidget {
           icon: const Icon(
             Iconsax.notification,
             size: 23,
+            color: Colors.white,
           ),
           onPressed: () {
             print("hello, I'm a notification!");
@@ -105,6 +119,7 @@ class sectionTwo extends StatelessWidget {
           "More Rooms",
           style: TextStyle(
             fontSize: 17,
+            color: Colors.white,
           ),
         ),
         CustomRoomCardRow(
@@ -167,6 +182,7 @@ class sectionOne extends StatelessWidget {
           "All Popular Rooms",
           style: TextStyle(
             fontSize: 17,
+            color: Colors.white,
           ),
         ),
 

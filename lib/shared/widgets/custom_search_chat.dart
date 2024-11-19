@@ -20,14 +20,14 @@ class SearchButton extends StatelessWidget {
             vertical: 12,
           ),
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15),
-            color: const Color(0xFF002352).withOpacity(0.2),
+            borderRadius: BorderRadius.circular(30),
+            color: Colors.white,
           ),
           child: const Row(
             mainAxisSize: MainAxisSize.min,
             children: [
               Icon(
-                Icons.search,
+                Iconsax.search_normal4,
                 color: Color(0xFF002352),
                 size: 24,
               ),

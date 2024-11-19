@@ -64,7 +64,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
         unselectedItemColor: Colors.grey,
         showUnselectedLabels: true,
         type: BottomNavigationBarType.fixed,
-        backgroundColor: const Color(0xFF002352),
+        backgroundColor: const Color(0xFF002352).withOpacity(0.2),
       ),
     );
   }

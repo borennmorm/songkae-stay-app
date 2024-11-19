@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart'; // Added import for Iconsax
 import 'package:room_rental_app/features/settings/profile_screen.dart';
@@ -19,8 +20,9 @@ class TenantSettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: const Color.fromARGB(255, 245, 250, 255),
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(20),
@@ -125,7 +127,7 @@ class TenantSettingsScreen extends StatelessWidget {
               FullWidthButton(
                 onPressed: () {},
                 text: 'Log Out',
-                color: const Color(0xFF002352).withOpacity(0.2),
+                color: const Color.fromARGB(255, 228, 96, 87),
                 textColor: Colors.white,
               ),
             ],

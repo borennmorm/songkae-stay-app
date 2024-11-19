@@ -36,6 +36,7 @@ class _ChatScreenState extends State<ChatScreen> {
     return Scaffold(
       // backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: const Color.fromARGB(218, 0, 36, 82),
         centerTitle: false,
         elevation: 0,
         automaticallyImplyLeading: false,
@@ -45,55 +46,67 @@ class _ChatScreenState extends State<ChatScreen> {
           },
         ),
       ),
-      body: Column(
-        children: [
-          // Custom Tab Buttons (Recent Message and Active)
-          Container(
-            padding: const EdgeInsets.fromLTRB(16.0, 0, 16.0, 16.0),
-            child: Row(
-              children: [
-                FillOutlineButton(
-                  press: () => _onTabSelected(0),
-                  text: "Recent Messages",
-                  isFilled: _selectedIndex == 0,
-                ),
-                const SizedBox(width: 10),
-                FillOutlineButton(
-                  press: () => _onTabSelected(1),
-                  text: "Active",
-                  isFilled: _selectedIndex == 1,
-                ),
-              ],
-            ),
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Color.fromARGB(218, 0, 36, 82),
+              Color.fromARGB(255, 230, 236, 241)
+            ],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
           ),
-          // Display selected content based on the selected tab
-          Expanded(
-            child: _selectedIndex == 0
-                ? ListView.builder(
-                    itemCount: chatsData.length,
-                    itemBuilder: (context, index) => ChatCard(
-                      chat: chatsData[index],
-                      press: () {
-                        Get.to(() => const MessagesScreen());
+        ),
+        child: Column(
+          children: [
+            // Custom Tab Buttons (Recent Message and Active)
+            Container(
+              padding: const EdgeInsets.fromLTRB(16.0, 0, 16.0, 16.0),
+              child: Row(
+                children: [
+                  FillOutlineButton(
+                    press: () => _onTabSelected(0),
+                    text: "Recent Messages",
+                    isFilled: _selectedIndex == 0,
+                  ),
+                  const SizedBox(width: 10),
+                  FillOutlineButton(
+                    press: () => _onTabSelected(1),
+                    text: "Active",
+                    isFilled: _selectedIndex == 1,
+                  ),
+                ],
+              ),
+            ),
+            // Display selected content based on the selected tab
+            Expanded(
+              child: _selectedIndex == 0
+                  ? ListView.builder(
+                      itemCount: chatsData.length,
+                      itemBuilder: (context, index) => ChatCard(
+                        chat: chatsData[index],
+                        press: () {
+                          Get.to(() => const MessagesScreen());
+                        },
+                      ),
+                    )
+                  : ListView.builder(
+                      itemCount: chatsData
+                          .where((chat) => chat.isActive)
+                          .toList()
+                          .length,
+                      itemBuilder: (context, index) {
+                        var activeChats =
+                            chatsData.where((chat) => chat.isActive).toList();
+                        return ChatCard(
+                          chat: activeChats[index],
+                          press: () {},
+                        );
                       },
                     ),
-                  )
-                : ListView.builder(
-                    itemCount: chatsData
-                        .where((chat) => chat.isActive)
-                        .toList()
-                        .length,
-                    itemBuilder: (context, index) {
-                      var activeChats =
-                          chatsData.where((chat) => chat.isActive).toList();
-                      return ChatCard(
-                        chat: activeChats[index],
-                        press: () {},
-                      );
-                    },
-                  ),
-          ),
-        ],
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -118,7 +131,7 @@ class FillOutlineButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(30),
       ),
       elevation: 0,
-      color: const Color(0xFF002352).withOpacity(0.2),
+      color: Colors.white,
       onPressed: press,
       child: Text(
         text,
