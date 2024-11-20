@@ -1,50 +1,76 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
-class SearchBars extends StatelessWidget {
-  final TextEditingController controller;
-  final Function(String) onSearch;
-  final Function(String) onTextChanged;
+class CustomSearch extends StatefulWidget {
+  const CustomSearch({super.key});
 
-  const SearchBars({
-    super.key,
-    required this.controller,
-    required this.onSearch,
-    required this.onTextChanged,
-  });
+  @override
+  State<CustomSearch> createState() => _CustomSearchState();
+}
+
+class _CustomSearchState extends State<CustomSearch> {
+  final String _googleApiKey = "AIzaSyDuEbc_TfhcaHFzEKLeRz5rWVnIzppqPk0";
+  final TextEditingController _searchController = TextEditingController();
+  List<dynamic> _predictions = [];
+
+  Future<void> _fetchSuggestions(String input) async {
+    if (input.isEmpty) {
+      setState(() {
+        _predictions = [];
+      });
+      return;
+    }
+
+    final url = Uri.parse(
+        "https://maps.googleapis.com/maps/api/place/autocomplete/json?input=$input&key=$_googleApiKey&components=country:kh");
+    final response = await http.get(url);
+
+    if (response.statusCode == 200) {
+      final data = json.decode(response.body);
+      setState(() {
+        _predictions = data["predictions"];
+      });
+    }
+  }
+
+  Future<void> _onPlaceSelected(String placeId) async {
+    final url = Uri.parse(
+        "https://maps.googleapis.com/maps/api/place/details/json?place_id=$placeId&key=$_googleApiKey");
+    final response = await http.get(url);
+
+    if (response.statusCode == 200) {
+      final data = json.decode(response.body);
+      final location = data["result"]["geometry"]["location"];
+      Navigator.pop(context, location);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      margin: const EdgeInsets.symmetric(horizontal: 10),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(20),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.1),
-            blurRadius: 10,
-            offset: const Offset(0, 4),
-          ),
-        ],
-      ),
-      child: Row(
+    return Scaffold(
+      appBar: AppBar(title: const Text("Custom Search")),
+      body: Column(
         children: [
-          Expanded(
-            child: TextField(
-              controller: controller,
-              style: const TextStyle(color: Colors.black87),
-              decoration: const InputDecoration(
-                hintText: 'Search Location',
-                border: InputBorder.none,
-                hintStyle: TextStyle(color: Colors.grey),
-              ),
-              onChanged: onTextChanged,
+          TextField(
+            controller: _searchController,
+            onChanged: _fetchSuggestions,
+            decoration: const InputDecoration(
+              hintText: "Search places...",
+              prefixIcon: Icon(Icons.search),
             ),
           ),
-          IconButton(
-            icon: const Icon(Icons.search, color: Colors.blueAccent),
-            onPressed: () => onSearch(controller.text),
+          Expanded(
+            child: ListView.builder(
+              itemCount: _predictions.length,
+              itemBuilder: (context, index) {
+                final prediction = _predictions[index];
+                return ListTile(
+                  title: Text(prediction["description"]),
+                  onTap: () => _onPlaceSelected(prediction["place_id"]),
+                );
+              },
+            ),
           ),
         ],
       ),

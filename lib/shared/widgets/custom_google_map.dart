@@ -10,21 +10,21 @@ class MapViews extends StatefulWidget {
 class _MapViewsState extends State<MapViews> {
   late GoogleMapController mapController;
 
-  final LatLng _center =
-      const LatLng(10.8231, 106.6297); // Set your default location here
+  final LatLng _center = const LatLng(13.084130, 103.218931);
 
   @override
   void initState() {
     super.initState();
     requestLocationPermission();
   }
+  
 
   Future<void> requestLocationPermission() async {
     var status = await Permission.location.request();
     if (status.isGranted) {
       print("Location permission granted.");
     } else if (status.isDenied || status.isPermanentlyDenied) {
-      openAppSettings(); // Directs the user to app settings if permissions are denied
+      openAppSettings();
     }
   }
 

@@ -1,30 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_map/flutter_map.dart';
-import 'package:latlong2/latlong.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-MarkerWidget(BuildContext context, double latitude, double longitude, String name) {
-  return MarkerLayer(
-    markers: [
-      Marker(
-        point: LatLng(latitude, longitude),
-        width: 80,
-        height: 80,
-        child: Row(
-          children: [
-            IconButton(
-              onPressed: () {
-                _showMarkerInfo(context, name);
-              },
-              icon: const Icon(
-                Icons.location_on,
-                size: 30,
-                color: Colors.red,
-              ),
-            ),
-          ],
-        ),
-      ),
-    ],
+Marker MarkerWidget(BuildContext context, double latitude, double longitude, String name) {
+  return Marker(
+    markerId: MarkerId(name),
+    position: LatLng(latitude, longitude),
+    infoWindow: InfoWindow(
+      title: name,
+      snippet: 'Tap for more details',
+      onTap: () {
+        _showMarkerInfo(context, name);
+      },
+    ),
+    icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed),
   );
 }
 

@@ -7,7 +7,7 @@ import 'package:room_rental_app/shared/widgets/custom_room_card_column.dart';
 import 'package:room_rental_app/shared/widgets/custom_room_card_row.dart';
 import 'package:room_rental_app/shared/widgets/custom_room_detail.dart';
 
-import '../../shared/widgets/custom_google_map.dart';
+import '../Map/map_on_search_home.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -86,8 +86,7 @@ class HomeScreen extends StatelessWidget {
             color: Colors.white,
           ),
           onPressed: () {
-            print("map");
-            MapViews();
+            Get.to(() => const MapOnSearchHome());
           },
         ),
         IconButton(

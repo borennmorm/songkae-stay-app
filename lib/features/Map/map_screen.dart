@@ -5,9 +5,6 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:http/http.dart' as http;
 import 'package:latlong2/latlong.dart';
 
-import '../../shared/widgets/custom_mark.dart';
-import '../../shared/widgets/custom_search_bar.dart';
-
 class MapScreen extends StatefulWidget {
   const MapScreen({super.key});
 
@@ -38,30 +35,30 @@ class _MapScreenState extends State<MapScreen> {
                 urlTemplate:
                     "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
               ),
-              MarkerWidget(context, 13.084130, 103.218931, "Marker 1"),
-              MarkerWidget(context, 13.084546, 103.218736, "Marker 2"),
-              MarkerWidget(context, 13.0855686, 103.2158628, "Marker 3"),
-              MarkerWidget(context, 13.099420, 103.210100, "Marker 4"),
+              // MarkerWidget(context, 13.084130, 103.218931, "Marker 1"),
+              // MarkerWidget(context, 13.084546, 103.218736, "Marker 2"),
+              // MarkerWidget(context, 13.0855686, 103.2158628, "Marker 3"),
+              // MarkerWidget(context, 13.099420, 103.210100, "Marker 4"),
             ],
           ),
-          Positioned(
-            top: 40,
-            left: 10,
-            right: 10,
-            child: SearchBars(
-              controller: searchController,
-              onSearch: _searchLocation,
-              onTextChanged: (value) {
-                if (value.isNotEmpty) {
-                  _fetchSuggestions(value);
-                } else {
-                  setState(() {
-                    suggestions.clear();
-                  });
-                }
-              },
-            ),
-          ),
+          // Positioned(
+          //   top: 40,
+          //   left: 10,
+          //   right: 10,
+          //   child: SearchBars(
+          //     controller: searchController,
+          //     onSearch: _searchLocation,
+          //     onTextChanged: (value) {
+          //       if (value.isNotEmpty) {
+          //         _fetchSuggestions(value);
+          //       } else {
+          //         setState(() {
+          //           suggestions.clear();
+          //         });
+          //       }
+          //     },
+          //   ),
+          // ),
           if (suggestions.isNotEmpty)
             Positioned(
               top: 90,
@@ -128,9 +125,7 @@ class _MapScreenState extends State<MapScreen> {
       }
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-            content:
-                Text('កំហុសក្នុងការស្វែងរកទីតាំង!')),
+        const SnackBar(content: Text('កំហុសក្នុងការស្វែងរកទីតាំង!')),
       );
     }
   }
