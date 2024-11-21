@@ -79,6 +79,7 @@ class PropertyScreen extends StatelessWidget {
           // Get.to(() => AddPropertyScreen());
         },
         backgroundColor: Colors.white,
+        shape: const CircleBorder(),
         elevation: 3,
         child: const Icon(
           Iconsax.add,

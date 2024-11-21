@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:room_rental_app/shared/widgets/custom_room_feature.dart';
+import 'package:room_rental_app/shared/widgets/property_infortmation.dart';
 
 import 'property_detail_controller.dart';
+import 'room_screen.dart';
 
 class PropertyDetailScreen extends StatelessWidget {
   PropertyDetailScreen({super.key});
@@ -15,17 +18,6 @@ class PropertyDetailScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xFFF5F6F8),
-        title: const Row(
-          children: [
-            Text(
-              '',
-              style: TextStyle(
-                fontSize: 18,
-              ),
-            ),
-          ],
-        ),
-        centerTitle: false,
         automaticallyImplyLeading: true,
         elevation: 0,
         leading: GestureDetector(
@@ -46,6 +38,44 @@ class PropertyDetailScreen extends StatelessWidget {
           ),
         ),
         actions: [
+          Stack(
+            children: [
+              IconButton(
+                icon: const Icon(
+                  Iconsax.home,
+                  size: 23,
+                  color: Color(0xFF002352),
+                ),
+                onPressed: () {
+                  Get.to(() => const RoomScreen());
+                },
+              ),
+              Positioned(
+                right: 4,
+                top: 8,
+                child: Container(
+                  padding: const EdgeInsets.all(2),
+                  decoration: BoxDecoration(
+                    color: const Color(0xFF002352),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  constraints: const BoxConstraints(
+                    minWidth: 16,
+                    minHeight: 16,
+                  ),
+                  child: const Text(
+                    '10',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 10,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ),
+            ],
+          ),
           IconButton(
             icon: const Icon(
               Iconsax.notification,
@@ -70,108 +100,13 @@ class PropertyDetailScreen extends StatelessWidget {
           ),
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        shape: const CircleBorder(),
+        backgroundColor: Colors.white,
+        child: const Icon(Iconsax.edit),
+      ),
     );
-  }
-}
-
-class AddImages extends StatelessWidget {
-  const AddImages({
-    super.key,
-    required this.controller,
-  });
-
-  final PropertyDetailController controller;
-
-  @override
-  Widget build(BuildContext context) {
-    return Obx(() {
-      return GridView.builder(
-        physics: const NeverScrollableScrollPhysics(), // Prevent scroll inside
-        shrinkWrap: true,
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 3, // 3 images in a row
-          mainAxisSpacing: 10,
-          crossAxisSpacing: 10,
-          childAspectRatio: 1,
-        ),
-        itemCount: controller.images.length + 1,
-        itemBuilder: (context, index) {
-          if (index < controller.images.length) {
-            // Display added images with delete button
-            return Stack(
-              children: [
-                AnimatedContainer(
-                  duration: const Duration(milliseconds: 300),
-                  curve: Curves.easeInOut,
-                  width: 100,
-                  height: 100,
-                  decoration: BoxDecoration(
-                    color: Colors.blueGrey[200], // Background color for image
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 2,
-                        blurRadius: 5,
-                        offset:
-                            const Offset(0, 3), // changes position of shadow
-                      ),
-                    ],
-                  ),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    child: Image.asset(
-                      'assets/images/image_1.jpg', // Replace with real image
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-                Positioned(
-                  top: 5,
-                  right: 5,
-                  child: GestureDetector(
-                    onTap: () {
-                      controller.removeImage(index);
-                    },
-                    child: const Icon(
-                      Iconsax.trash,
-                      size: 20,
-                      color: Colors.redAccent,
-                    ),
-                  ),
-                ),
-              ],
-            );
-          } else {
-            // Display the add icon container
-            return GestureDetector(
-              onTap: controller.addImage,
-              child: Container(
-                width: 100,
-                height: 100,
-                decoration: BoxDecoration(
-                  color: Colors.grey[300],
-                  borderRadius: BorderRadius.circular(10),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.06),
-                      spreadRadius: 2,
-                      blurRadius: 5,
-                      offset: const Offset(0, 0),
-                    ),
-                  ],
-                ),
-                child: Icon(
-                  Iconsax.add,
-                  color: Colors.grey[500],
-                  size: 30,
-                ),
-              ),
-            );
-          }
-        },
-      );
-    });
   }
 }
 
@@ -180,106 +115,231 @@ class PropertyDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const Text(
-          'Property Title',
-          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      Container(
+        width: double.infinity,
+        height: 200,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(15),
+          color: Colors.grey[300],
         ),
-        const SizedBox(height: 5),
-        const Row(
-          children: [
-            Icon(Iconsax.location, size: 16, color: Colors.grey),
-            SizedBox(width: 5),
-            Text('Battambang', style: TextStyle(fontSize: 14)),
-          ],
+        child: const Center(
+          child: Text('Location!'),
         ),
-        const SizedBox(height: 10),
-        const Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text('Price: \$50 /month', style: TextStyle(fontSize: 14)),
-            Padding(
-              padding: EdgeInsets.only(right: 30),
-              child: Text('Bed: 01', style: TextStyle(fontSize: 14)),
-            ),
-          ],
-        ),
-        const SizedBox(height: 10),
-        const Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text('Bathroom: 01', style: TextStyle(fontSize: 14)),
-            Text('Size: 5 x 6m', style: TextStyle(fontSize: 14)),
-          ],
-        ),
-        const SizedBox(height: 10),
-        const Text(
-          'Description:',
-          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-        ),
-        const Padding(
-          padding: EdgeInsets.symmetric(vertical: 8),
-          child: Text(
-            'This spacious room is filled with natural light and features a comfortable queen-sized bed, a large wardrobe for storage, and a private en-suite bathroom.',
-            textAlign: TextAlign.justify,
-            style: TextStyle(fontSize: 14),
+      ),
+      const SizedBox(height: 5),
+
+      const Text(
+        'Property Title',
+        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+      ),
+      const SizedBox(height: 5),
+      GestureDetector(
+        onTap: () {
+          print('Tapped');
+        },
+        child: Container(
+          padding: const EdgeInsets.all(5),
+          decoration: BoxDecoration(
+              color: const Color(0xFF002352).withOpacity(0.05),
+              borderRadius: BorderRadius.circular(12)),
+          child: const Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: EdgeInsets.only(top: 2),
+                child: Icon(
+                  Iconsax.location5,
+                  size: 15,
+                  color: Color(0xFF002352),
+                ),
+              ),
+              Expanded(
+                child: Text(
+                  'Toulta Ek, Battambang, Cambodia',
+                  style: TextStyle(
+                    fontFamily: 'NotoSansKhmer',
+                    fontSize: 14,
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
-        const Divider(
-          thickness: 1,
-          color: Colors.grey,
+      ),
+      const SizedBox(height: 10),
+      // Room Feature
+      const RoomFeature(),
+      // Description
+      const Description(),
+      // Property Information
+      const PropertyInfortmation(),
+      const SizedBox(height: 70),
+    ]);
+  }
+}
+
+class Description extends StatelessWidget {
+  const Description({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return const Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          "Description",
+          style: TextStyle(
+            fontSize: 15,
+            fontWeight: FontWeight.bold,
+          ),
         ),
-        const SizedBox(height: 10),
-        const Text(
-          'Basic Info:',
-          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+        SizedBox(
+          height: 5,
         ),
-        const SizedBox(height: 5),
-        buildBasicInfoRow('Electricity:', '1500៛ /kwh'),
-        buildBasicInfoRow('Water:', '700៛ /m3'),
-        buildBasicInfoRow('Garbage:', 'Free'),
-        buildBasicInfoRow('Wifi:', '4000៛ /month'),
-        const SizedBox(height: 20),
-        const Divider(
-          thickness: 1,
-          color: Colors.grey,
+        ExpandableText(
+          text:
+              "This spacious room is filled with natural light and features a comfortable queen-sized bed, a large wardrobe for storage, and a private en-suite bathroom.",
+          style: TextStyle(
+            fontSize: 15,
+          ),
         ),
-        const Text(
-          'Contact:',
-          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-        ),
-        const SizedBox(height: 10),
-        buildContactRow('Phone:', '091284723'),
-        buildContactRow('Telegram:', '@borin_more'),
       ],
     );
   }
+}
 
-  Widget buildBasicInfoRow(String title, String value) {
+class ExpandableText extends StatefulWidget {
+  final String text;
+  final TextStyle? style;
+
+  const ExpandableText({
+    super.key,
+    required this.text,
+    this.style,
+  });
+
+  @override
+  _ExpandableTextState createState() => _ExpandableTextState();
+}
+
+class _ExpandableTextState extends State<ExpandableText> {
+  bool isExpanded = false;
+
+  @override
+  Widget build(BuildContext context) {
+    const int textLimit = 100;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          isExpanded
+              ? widget.text
+              : '${widget.text.substring(0, textLimit)}...',
+          style: widget.style,
+          textAlign: TextAlign.justify,
+        ),
+        InkWell(
+          onTap: () {
+            setState(() {
+              isExpanded = !isExpanded;
+            });
+          },
+          child: Text(
+            isExpanded ? 'Show Less' : 'Show More',
+            style: TextStyle(
+              fontSize: widget.style?.fontSize ?? 11,
+              color: const Color(0xFF002352),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class RoomFeature extends StatelessWidget {
+  const RoomFeature({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final List<Map<String, dynamic>> basicInfoList = [
+      {
+        'icon': Icons.bed_outlined,
+        'labelText': 'Bed',
+        'valueText': 'Available'
+      },
+      {
+        'icon': Icons.bathroom_outlined,
+        'labelText': 'Bathroom',
+        'valueText': 'Available'
+      },
+      {
+        'icon': Icons.square_foot_outlined,
+        'labelText': 'Size',
+        'valueText': '4 x 5'
+      },
+    ];
+
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 3),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(title, style: const TextStyle(fontSize: 14)),
-          Text(value, style: const TextStyle(fontSize: 14)),
-        ],
+      padding: const EdgeInsets.symmetric(vertical: 15),
+      child: GridView.builder(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 3,
+          childAspectRatio: 1.3,
+        ),
+        itemCount: basicInfoList.length,
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
+        padding: EdgeInsets.zero,
+        itemBuilder: (context, index) {
+          final item = basicInfoList[index];
+          return BasicInfoComponent(
+            icon: item['icon'] as IconData,
+            labelText: item['labelText'] as String,
+            valueText: item['valueText'] as String,
+          );
+        },
       ),
     );
   }
+}
 
-  Widget buildContactRow(String title, String value) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 3),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(title, style: const TextStyle(fontSize: 14)),
-          Text(value, style: const TextStyle(fontSize: 14)),
-        ],
-      ),
+class BasicInfoComponent extends StatelessWidget {
+  final IconData icon;
+  final String labelText;
+  final String valueText;
+
+  const BasicInfoComponent({
+    super.key,
+    required this.icon,
+    required this.labelText,
+    required this.valueText,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        Icon(
+          icon,
+          size: 30,
+          color: const Color(0xFF002352),
+        ),
+        const SizedBox(height: 5),
+        Text(
+          labelText,
+          style: const TextStyle(fontWeight: FontWeight.bold),
+        ),
+        Text(
+          valueText,
+          style: TextStyle(color: Colors.grey[600]),
+        ),
+      ],
     );
   }
 }
