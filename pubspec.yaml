@@ -49,6 +49,11 @@ flutter_native_splash:
   image: "assets/images/logo.png"
   branding: "assets/images/name_no_bg.png"
 
+  android_12:
+    background_image: "assets/images/background.png"
+    image: "assets/images/logo.png"
+    branding: "assets/images/name_no_bg.png"
+
 flutter:
   uses-material-design: true
   assets:

@@ -59,7 +59,7 @@ class _RoomScreenState extends State<RoomScreen> {
       appBar: AppBar(
         backgroundColor: const Color(0xFFF5F6F8),
         title: Text(
-          selectMode ? 'Select Rooms' : '',
+          selectMode ? 'Select Rooms' : 'Room Management',
           style: const TextStyle(fontSize: 15),
         ),
         centerTitle: false,
