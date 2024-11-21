@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:room_rental_app/shared/widgets/custom_room_feature.dart';
 import 'package:room_rental_app/shared/widgets/property_infortmation.dart';
 
 import 'property_detail_controller.dart';

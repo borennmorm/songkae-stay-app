@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:room_rental_app/shared/widgets/custom_language_card.dart';
 import 'package:room_rental_app/shared/widgets/custom_row_icon_button.dart';
 
 class AccountTypeScreen extends StatelessWidget {

@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:room_rental_app/shared/widgets/custom_bottom_nav.dart';
 import 'package:room_rental_app/shared/widgets/tenant_loggon_bottom_nav.dart';
 
 class SplashScreen extends StatefulWidget {

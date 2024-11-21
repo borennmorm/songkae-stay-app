@@ -196,7 +196,7 @@ class sectionOne extends StatelessWidget {
                 location: 'Battambang, Cambodia',
                 title: 'Room Title',
                 rating: 4.5,
-                price: '\$45',
+                price: '\$50',
                 onTap: () {
                   const RoomDetail(
                       images: ['assets/images/room.jpg'],

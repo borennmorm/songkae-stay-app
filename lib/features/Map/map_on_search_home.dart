@@ -1,8 +1,6 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_google_places_hoc081098/flutter_google_places_hoc081098.dart';
-import 'package:flutter_google_places_hoc081098/google_maps_webservice_places.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:http/http.dart' as http;
 import 'package:permission_handler/permission_handler.dart';
@@ -30,12 +28,12 @@ class _MapOnSearchHomeState extends State<MapOnSearchHome> {
   }
 
   void _initializeMarkers() {
-    _markers.add(Marker(
+    _markers.add(const Marker(
       markerId: MarkerId("1"),
       position: LatLng(13.084130, 103.218931),
       infoWindow: InfoWindow(title: "Marker 1"),
     ));
-    _markers.add(Marker(
+    _markers.add(const Marker(
       markerId: MarkerId("2"),
       position: LatLng(13.084546, 103.218736),
       infoWindow: InfoWindow(title: "Marker 2"),
@@ -56,37 +54,37 @@ class _MapOnSearchHomeState extends State<MapOnSearchHome> {
   }
 
   Future<void> _searchPlace() async {
-    final Prediction? prediction = await PlacesAutocomplete.show(
-      context: context,
-      apiKey: _googleApiKey,
-      mode: Mode.overlay, // Options: fullscreen, overlay
-      language: "en",
-      components: [Component(Component.country, "kh")], // Limit to Cambodia
-    );
+    // final Prediction? prediction = await PlacesAutocomplete.show(
+    //   context: context,
+    //   apiKey: _googleApiKey,
+    //   mode: Mode.overlay, // Options: fullscreen, overlay
+    //   language: "en",
+    //   components: [Component(Component.country, "kh")], // Limit to Cambodia
+    // );
 
-    if (prediction != null) {
-      final url = Uri.parse(
-          "https://maps.googleapis.com/maps/api/place/details/json?place_id=${prediction.placeId}&key=$_googleApiKey");
-      final response = await http.get(url);
+    // if (prediction != null) {
+    //   final url = Uri.parse(
+    //       "https://maps.googleapis.com/maps/api/place/details/json?place_id=${prediction.placeId}&key=$_googleApiKey");
+    //   final response = await http.get(url);
 
-      if (response.statusCode == 200) {
-        final data = json.decode(response.body);
-        final location = data['result']['geometry']['location'];
-        final latLng = LatLng(location['lat'], location['lng']);
+    //   if (response.statusCode == 200) {
+    //     final data = json.decode(response.body);
+    //     final location = data['result']['geometry']['location'];
+    //     final latLng = LatLng(location['lat'], location['lng']);
 
-        // Update map and markers
-        mapController.animateCamera(CameraUpdate.newLatLngZoom(latLng, 14.0));
-        setState(() {
-          _markers.add(Marker(
-            markerId: MarkerId(prediction.placeId!),
-            position: latLng,
-            infoWindow: InfoWindow(title: prediction.description),
-          ));
-        });
-      } else {
-        print("Failed to fetch place details.");
-      }
-    }
+    //     // Update map and markers
+    //     mapController.animateCamera(CameraUpdate.newLatLngZoom(latLng, 14.0));
+    //     setState(() {
+    //       _markers.add(Marker(
+    //         markerId: MarkerId(prediction.placeId!),
+    //         position: latLng,
+    //         infoWindow: InfoWindow(title: prediction.description),
+    //       ));
+    //     });
+    //   } else {
+    //     print("Failed to fetch place details.");
+    //   }
+    // }
   }
 
   @override
@@ -99,7 +97,7 @@ class _MapOnSearchHomeState extends State<MapOnSearchHome> {
             child: TextField(
               decoration: InputDecoration(
                 hintText: "Search for places",
-                prefixIcon: Icon(Icons.search),
+                prefixIcon: const Icon(Icons.search),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10.0),
                 ),

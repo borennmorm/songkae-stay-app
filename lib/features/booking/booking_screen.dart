@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:room_rental_app/shared/widgets/custom_button.dart';
 import 'package:table_calendar/table_calendar.dart';

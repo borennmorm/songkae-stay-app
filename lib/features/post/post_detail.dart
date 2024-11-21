@@ -1,16 +1,16 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
-import 'package:latlong2/latlong.dart';
 import 'package:room_rental_app/features/booking/booking_screen.dart';
 import 'package:room_rental_app/shared/widgets/custom_button.dart';
 import 'package:room_rental_app/shared/widgets/custom_room_feature.dart';
 import 'package:room_rental_app/shared/widgets/property_infortmation.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+
+import '../../shared/widgets/custom_mark_detail.dart';
 
 class PostDetail extends StatelessWidget {
   const PostDetail({super.key});
@@ -225,33 +225,7 @@ class Location extends StatelessWidget {
           height: 200,
           child: ClipRRect(
             borderRadius: BorderRadius.circular(10),
-            child: FlutterMap(
-              mapController: mapController,
-              options: MapOptions(
-                  initialCenter: const LatLng(13.2658849, 103.0692093),
-                  initialZoom: 13.0,
-                  onTap: (TapPosition, LatLng) {}),
-              children: [
-                TileLayer(
-                  urlTemplate:
-                      "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-                ),
-                const MarkerLayer(
-                  markers: [
-                    Marker(
-                      point: LatLng(13.2658849, 103.0692093),
-                      width: 80,
-                      height: 80,
-                      child: Icon(
-                        Icons.location_pin,
-                        color: Colors.red,
-                        size: 40,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
+            child: MarkOnMap(13.084130, 103.218931),
           ),
         ),
       ],

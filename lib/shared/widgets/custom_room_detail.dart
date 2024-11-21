@@ -1,10 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_map/flutter_map.dart';
-import 'package:room_rental_app/shared/widgets/custom_map_view.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import 'custom_button.dart';
+import 'custom_mark_detail.dart';
 
 class RoomDetail extends StatelessWidget {
   final List<String> images;
@@ -347,10 +346,8 @@ class RoomDetail extends StatelessWidget {
                               ],
                             ),
                           ),
-                          MapView(
-                            mapController: MapController(),
-                            markers: const [],
-                          ),
+                          Text("Map"),
+                          MarkOnMap(13.084130, 103.218931),
                           Divider(color: Colors.grey.withOpacity(0.4)),
                           const Text("Location",
                               style: TextStyle(
