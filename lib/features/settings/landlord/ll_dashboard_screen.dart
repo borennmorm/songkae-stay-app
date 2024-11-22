@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 import 'property/properties_screen.dart';
+import 'tenants/tenants_management_screen.dart';
 
 class LandlordDashboardScreen extends StatelessWidget {
   const LandlordDashboardScreen({super.key});
@@ -104,7 +105,7 @@ class LandlordDashboardScreen extends StatelessWidget {
                   Cards(
                     icon: Iconsax.user,
                     onTap: () {
-                      // Get.to(() => const TenantsManageScreen());
+                      Get.to(() => const TenantsManagementScreen());
                     },
                     text: 'Tenants',
                   ),
