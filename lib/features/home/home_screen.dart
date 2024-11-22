@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:room_rental_app/features/post/post_detail.dart';
+import 'package:room_rental_app/features/home/post/post_detail.dart';
 import 'package:room_rental_app/shared/widgets/custom_profile.dart';
-import 'package:room_rental_app/shared/widgets/custom_room_card_column.dart';
-import 'package:room_rental_app/shared/widgets/custom_room_card_row.dart';
 import 'package:room_rental_app/shared/widgets/custom_room_detail.dart';
 
 import '../Map/map_on_search_home.dart';
+import 'widgets/home_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -139,6 +138,7 @@ class sectionTwo extends StatelessWidget {
           rating: 4.8,
           price: '45',
           onTap: () {
+            Get.to(() => const PostDetail());
             print('Card tapped');
           },
         ),
@@ -149,6 +149,7 @@ class sectionTwo extends StatelessWidget {
           rating: 4.8,
           price: '45',
           onTap: () {
+            Get.to(() => const PostDetail());
             print('Card tapped');
           },
         ),

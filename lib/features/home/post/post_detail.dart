@@ -10,7 +10,7 @@ import 'package:room_rental_app/shared/widgets/custom_room_feature.dart';
 import 'package:room_rental_app/shared/widgets/property_infortmation.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-import '../../shared/widgets/custom_mark_detail.dart';
+import '../../../shared/widgets/custom_mark_detail.dart';
 
 class PostDetail extends StatelessWidget {
   const PostDetail({super.key});
