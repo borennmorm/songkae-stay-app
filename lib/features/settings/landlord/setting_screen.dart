@@ -10,7 +10,7 @@ import '../account_type_screen.dart';
 import '../privacy_policy.dart';
 import '../terms_conditions.dart';
 import '../language_screen.dart';
-import 'll_dashboard_screen.dart';
+import 'dashboard_screen.dart';
 
 class LandloardSettingsScreen extends StatelessWidget {
   const LandloardSettingsScreen({super.key});
