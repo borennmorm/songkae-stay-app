@@ -29,7 +29,6 @@ class PostDetail extends StatelessWidget {
     ];
 
     final PageController pageController = PageController();
-    final MapController mapController = MapController();
 
     return Scaffold(
       body: Stack(
@@ -47,7 +46,7 @@ class PostDetail extends StatelessWidget {
           // Back Icon (Positioned)
           const BackIcon(),
           // Draggable Scrollable Sheet
-          Article(mapController: mapController),
+          Article(),
         ],
       ),
     );
@@ -57,10 +56,8 @@ class PostDetail extends StatelessWidget {
 class Article extends StatelessWidget {
   const Article({
     super.key,
-    required this.mapController,
   });
 
-  final MapController mapController;
 
   @override
   Widget build(BuildContext context) {
@@ -88,7 +85,7 @@ class Article extends StatelessWidget {
                       const RoomFeature(),
                       const Description(),
                       const PropertyInfortmation(),
-                      Location(mapController: mapController),
+                      // Location
                       const SizedBox(height: 10),
                       FullWidthButton(
                         onPressed: () {
@@ -201,32 +198,6 @@ class Introduction extends StatelessWidget {
               ],
             ),
           ],
-        ),
-      ],
-    );
-  }
-}
-
-class Location extends StatelessWidget {
-  const Location({
-    super.key,
-    required this.mapController,
-  });
-
-  final MapController mapController;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SizedBox(
-          width: double.infinity,
-          height: 200,
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(10),
-            child: MarkOnMap(13.084130, 103.218931),
-          ),
         ),
       ],
     );

@@ -18,7 +18,7 @@ class _TenantLoggonBottomNavState extends State<TenantLoggonBottomNav> {
   // List of pages corresponding to each index (all widgets instantiated)
   final List<Widget> _pages = [
     const HomeScreen(),
-    MapViews(),
+    const MapViews(),
     const ChatScreen(),
     const TenantSettingsScreen(),
   ];

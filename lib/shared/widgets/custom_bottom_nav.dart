@@ -31,7 +31,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
   // List of pages corresponding to each index (excluding UserScreen)
   final List<Widget> _pages = [
     const HomeScreen(),
-    MapViews(),
+    const MapViews(),
     const ChatScreen(),
   ];
 

@@ -346,7 +346,7 @@ class RoomDetail extends StatelessWidget {
                               ],
                             ),
                           ),
-                          Text("Map"),
+                          const Text("Map"),
                           MarkOnMap(13.084130, 103.218931),
                           Divider(color: Colors.grey.withOpacity(0.4)),
                           const Text("Location",

@@ -52,10 +52,10 @@ class TenantsApplicationScreen extends StatelessWidget {
           // Informations
           const Information(),
           // Pricing
-          CollapsibleContainer(),
+          const CollapsibleContainer(),
           // Select Date
-          Padding(
-            padding: const EdgeInsets.symmetric(
+          const Padding(
+            padding: EdgeInsets.symmetric(
               horizontal: 15,
               vertical: 10,
             ),
@@ -245,12 +245,12 @@ class CustomButton extends StatelessWidget {
   final VoidCallback onPressed;
 
   const CustomButton({
-    Key? key,
+    super.key,
     required this.icon,
     required this.backgroundColor,
     required this.iconColor,
     required this.onPressed,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -278,6 +278,8 @@ class CustomButton extends StatelessWidget {
 }
 
 class CollapsibleContainer extends StatefulWidget {
+  const CollapsibleContainer({super.key});
+
   @override
   _CollapsibleContainerState createState() => _CollapsibleContainerState();
 }
@@ -463,6 +465,8 @@ class _CollapsibleContainerState extends State<CollapsibleContainer> {
 }
 
 class SelectDateWidget extends StatefulWidget {
+  const SelectDateWidget({super.key});
+
   @override
   _SelectDateWidgetState createState() => _SelectDateWidgetState();
 }
@@ -551,7 +555,7 @@ class _SelectDateWidgetState extends State<SelectDateWidget> {
                         childDelegate: ListWheelChildBuilderDelegate(
                           builder: (context, index) => Center(
                             child: Text(
-                              '${_formatMonth(index + 1)}',
+                              _formatMonth(index + 1),
                               style: const TextStyle(fontSize: 18),
                             ),
                           ),
@@ -948,7 +952,6 @@ void _showCustomWarningDialog(BuildContext context) {
   );
 }
 
-// Function to display the ID card popup
 // Function to display the ID card popup
 void _showIdCardPopup(BuildContext context, String imageUrl) {
   showDialog(

@@ -138,7 +138,7 @@ class TenantCard extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         // Do sth
-        Get.to(() => TenantsApplicationScreen());
+        Get.to(() => const TenantsApplicationScreen());
       },
       child: Container(
         width: double.infinity,

@@ -59,6 +59,7 @@ flutter:
   assets:
     - assets/images/
     - assets/images/sangkaestay.png
+    - assets/images/room.jpg
   fonts:
     - family: NotoSansKhmer
       fonts:
