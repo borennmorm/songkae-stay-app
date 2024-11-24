@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:room_rental_app/shared/widgets/dropdown/feature.dart';
 import 'package:room_rental_app/shared/widgets/dropdown/floor.dart';
 import 'package:room_rental_app/shared/widgets/dropdown/price.dart';
+
+import 'add_room.dart';
 
 class RoomScreen extends StatefulWidget {
   const RoomScreen({super.key});
@@ -60,7 +63,7 @@ class _RoomScreenState extends State<RoomScreen> {
         backgroundColor: const Color(0xFFF5F6F8),
         title: Text(
           selectMode ? 'Select Rooms' : 'Room Management',
-          style: const TextStyle(fontSize: 15),
+          style: const TextStyle(fontSize: 18),
         ),
         centerTitle: false,
         automaticallyImplyLeading: true,
@@ -100,7 +103,9 @@ class _RoomScreenState extends State<RoomScreen> {
       ),
       backgroundColor: const Color(0xFFF5F6F8),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Get.to(() => AddRoomScreen());
+        },
         shape: const CircleBorder(),
         backgroundColor: Colors.white,
         child: const Icon(Icons.add),

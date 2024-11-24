@@ -54,7 +54,7 @@ class _AddInvoiceScreenState extends State<AddInvoiceScreen> {
               padding: EdgeInsets.symmetric(
                 horizontal: MediaQuery.of(context).size.width * 0.05,
               ),
-              child: SearchBar(),
+              child: const SearchBar(),
             ),
             const SizedBox(
               height: 10,
@@ -371,6 +371,8 @@ class _PricingRow extends StatelessWidget {
 
 /// Invoice form widget to input month, utilities usage, payment status, and total cost
 class InvoiceForm extends StatelessWidget {
+  const InvoiceForm({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -419,14 +421,14 @@ class InvoiceForm extends StatelessWidget {
             children: [
               CustomButton(
                 text: 'Calculate',
-                color: Color(0xFF002352),
+                color: const Color(0xFF002352),
                 onPressed: () {
                   print("Calculate pressed");
                 },
               ),
               CustomButton(
                 text: 'Generate',
-                color: Color(0xFF002352),
+                color: const Color(0xFF002352),
                 onPressed: () {
                   print("Generate pressed");
                 },
@@ -443,7 +445,7 @@ class InvoiceForm extends StatelessWidget {
 class FormSectionTitle extends StatelessWidget {
   final String title;
 
-  const FormSectionTitle({required this.title});
+  const FormSectionTitle({super.key, required this.title});
 
   @override
   Widget build(BuildContext context) {

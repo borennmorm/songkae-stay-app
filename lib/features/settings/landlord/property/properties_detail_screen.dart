@@ -75,16 +75,6 @@ class PropertyDetailScreen extends StatelessWidget {
               ),
             ],
           ),
-          IconButton(
-            icon: const Icon(
-              Iconsax.notification,
-              size: 23,
-              color: Color(0xFF002352),
-            ),
-            onPressed: () {
-              print("hello, I'm a notification!");
-            },
-          ),
         ],
       ),
       backgroundColor: const Color(0xFFF5F6F8),
@@ -126,7 +116,7 @@ class PropertyDetails extends StatelessWidget {
           child: Text('Location!'),
         ),
       ),
-      const SizedBox(height: 5),
+      const SizedBox(height: 15),
 
       const Text(
         'Property Title',

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
+import 'add_property.dart';
 import 'properties_detail_screen.dart';
 
 class PropertyScreen extends StatelessWidget {
@@ -9,6 +10,16 @@ class PropertyScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Sample data to simulate properties
+    final List<Map<String, dynamic>> properties = List.generate(
+      2, // Number of properties
+      (index) => {
+        "name": "Property ${index + 1}",
+        "rooms": 25 + index,
+        "location": "Battambang, Cambodia",
+      },
+    );
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xFFF5F6F8),
@@ -21,15 +32,16 @@ class PropertyScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 8),
+            // Property counter dynamically showing the number of properties
             Container(
               padding: const EdgeInsets.all(6),
               decoration: BoxDecoration(
                 color: const Color(0xFF002352).withOpacity(0.3),
                 shape: BoxShape.circle,
               ),
-              child: const Text(
-                '1',
-                style: TextStyle(
+              child: Text(
+                properties.length.toString(), // Dynamic counter
+                style: const TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.bold,
                 ),
@@ -57,26 +69,12 @@ class PropertyScreen extends StatelessWidget {
             ),
           ),
         ),
-        actions: [
-          IconButton(
-            icon: const Icon(
-              Iconsax.notification,
-              size: 23,
-              color: Color(0xFF002352),
-            ),
-            onPressed: () {
-              print("hello, I'm a notification!");
-            },
-          ),
-        ],
       ),
-
       backgroundColor: const Color(0xFFF5F6F8),
-
-      // Floating Button for Add new property
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // Get.to(() => AddPropertyScreen());
+          // Navigate to AddPropertyScreen()
+          Get.to(() => const AddProperty());
         },
         backgroundColor: Colors.white,
         shape: const CircleBorder(),
@@ -89,12 +87,14 @@ class PropertyScreen extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
         child: ListView.builder(
-          itemCount: 1,
+          itemCount: properties.length,
           itemBuilder: (context, index) {
-            return const Padding(
-              padding: EdgeInsets.only(bottom: 10),
-              // property card
-              child: PropertyCard(),
+            return Padding(
+              padding: const EdgeInsets.only(bottom: 10),
+              child: PropertyCard(
+                property: properties[index],
+                number: index + 1,
+              ),
             );
           },
         ),
@@ -104,8 +104,13 @@ class PropertyScreen extends StatelessWidget {
 }
 
 class PropertyCard extends StatelessWidget {
+  final Map<String, dynamic> property;
+  final int number;
+
   const PropertyCard({
     super.key,
+    required this.property,
+    required this.number,
   });
 
   @override
@@ -131,74 +136,78 @@ class PropertyCard extends StatelessWidget {
         ),
         child: Row(
           children: [
-            ClipRRect(
-              borderRadius: const BorderRadius.all(Radius.circular(5)),
-              child: Image.asset(
-                'assets/images/property.png',
-                width: 70,
-                height: 70,
-                fit: BoxFit.cover,
+            // Fixed color for the property icon
+            Container(
+              width: 70,
+              height: 70,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(5),
+                color: const Color(0xFF002352).withOpacity(0.3),
+              ),
+              child: Center(
+                child: Text(
+                  number.toString().padLeft(2, '0'), // Display property number
+                  style: const TextStyle(
+                    color: Color(0xFF002352),
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
             ),
-            const SizedBox(
-              width: 10,
-            ),
-            const Expanded(
+            const SizedBox(width: 10),
+            Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  SizedBox(
-                    width: 200,
-                    child: Text(
-                      'Property Name',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 1,
+                  Text(
+                    property['name'],
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
                     ),
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
                   ),
                   Row(
                     children: [
-                      Icon(
+                      const Icon(
                         Iconsax.home,
                         size: 13,
                         color: Colors.black,
                       ),
-                      SizedBox(width: 5),
+                      const SizedBox(width: 5),
                       Text(
-                        'Rooms: 25',
-                        style: TextStyle(
+                        'Rooms: ${property['rooms']}',
+                        style: const TextStyle(
                           color: Colors.black,
                           fontSize: 13,
                         ),
-                      )
+                      ),
                     ],
                   ),
                   Row(
                     children: [
-                      Icon(
+                      const Icon(
                         Iconsax.location,
                         size: 13,
                         color: Colors.black,
                       ),
-                      SizedBox(width: 5),
-                      SizedBox(
-                        width: 200,
+                      const SizedBox(width: 5),
+                      Expanded(
                         child: Text(
-                          'Battambang, Cambodia',
-                          style: TextStyle(
+                          property['location'],
+                          style: const TextStyle(
                             color: Colors.black,
                             fontSize: 13,
                           ),
                           overflow: TextOverflow.ellipsis,
                           maxLines: 1,
                         ),
-                      )
+                      ),
                     ],
-                  )
+                  ),
                 ],
               ),
             ),

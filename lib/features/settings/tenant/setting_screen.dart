@@ -10,7 +10,7 @@ import '../account_type_screen.dart';
 import '../privacy_policy.dart';
 import '../terms_conditions.dart';
 import 'dashboard_screen.dart';
-import 'favorite_screen.dart';
+import '../favorite_screen.dart';
 import '../language_screen.dart';
 import 'support.dart';
 import 'tsbooking_screen.dart';

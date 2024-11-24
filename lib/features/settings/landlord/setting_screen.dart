@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart'; // Added import for Iconsax
+import 'package:room_rental_app/features/settings/favorite_screen.dart';
 import 'package:room_rental_app/features/settings/profile_screen.dart';
 import 'package:room_rental_app/shared/widgets/custom_button.dart';
 
@@ -54,7 +55,7 @@ class LandloardSettingsScreen extends StatelessWidget {
                       icon: Iconsax.heart, // Updated icon
                       text: 'Favorite',
                       onTap: () {
-                        // Get.to(() => const FavoriteScreen());
+                        Get.to(() => const FavoriteScreen());
                       },
                     ),
                     _buildSettingsOption(

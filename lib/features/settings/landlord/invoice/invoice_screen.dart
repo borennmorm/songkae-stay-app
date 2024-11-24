@@ -304,7 +304,7 @@ class DashPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     var paint = Paint()
-      ..color = Color(0xFF002352).withOpacity(0.5)
+      ..color = const Color(0xFF002352).withOpacity(0.5)
       ..strokeWidth = 1;
 
     var max = size.width;

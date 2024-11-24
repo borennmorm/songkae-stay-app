@@ -14,6 +14,7 @@ class FavoriteScreen extends StatelessWidget {
             fontSize: 18,
           ),
         ),
+        centerTitle: false,
         automaticallyImplyLeading: true,
         backgroundColor: const Color(0xFFF5F6F8),
         elevation: 0,
@@ -127,7 +128,7 @@ class FavoriteScreen extends StatelessWidget {
                           padding: const EdgeInsets.symmetric(
                               horizontal: 8.0, vertical: 4.0),
                           decoration: BoxDecoration(
-                            color: Colors.amber,
+                            color: Colors.red,
                             borderRadius: BorderRadius.circular(8.0),
                           ),
                           child: const Text(

@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:room_rental_app/shared/widgets/custom_language_card.dart';
 
-class LanguageScreen extends StatelessWidget {
-  const LanguageScreen({super.key});
+class NotificationScreen extends StatelessWidget {
+  const NotificationScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Language',
+          'Notification',
           style: TextStyle(
             fontSize: 18,
           ),
         ),
-        centerTitle: false,
         automaticallyImplyLeading: true,
         backgroundColor: const Color(0xFFF5F6F8),
         elevation: 0,
@@ -37,21 +35,6 @@ class LanguageScreen extends StatelessWidget {
         ),
       ),
       backgroundColor: const Color(0xFFF5F6F8),
-      body: const Padding(
-        padding: EdgeInsets.all(10.0),
-        child: Column(
-          children: [
-            LanguageCard(
-              flagImage: 'assets/images/flag_cambodia.png',
-              languageName: 'Khmer',
-            ),
-            LanguageCard(
-              flagImage: 'assets/images/flag_us.png',
-              languageName: 'English',
-            ),
-          ],
-        ),
-      ),
     );
   }
 }
