@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:room_rental_app/features/settings/landlord/invoice/add_invoice_screen.dart';
 
 class TenantsApplicationScreen extends StatelessWidget {
   const TenantsApplicationScreen({super.key});
@@ -38,7 +40,9 @@ class TenantsApplicationScreen extends StatelessWidget {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Get.to(() => AddInvoiceScreen());
+            },
             icon: const Icon(
               Iconsax.check,
               color: Color(0xFF002352),

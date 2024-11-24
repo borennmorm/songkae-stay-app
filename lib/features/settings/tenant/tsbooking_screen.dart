@@ -15,6 +15,7 @@ class TsbookingScreen extends StatelessWidget {
             fontSize: 18,
           ),
         ),
+        centerTitle: false,
         automaticallyImplyLeading: true,
         backgroundColor: const Color(0xFFF5F6F8),
         elevation: 0,
@@ -202,6 +203,7 @@ void _showCustomWarningDialog(BuildContext context) {
     barrierDismissible: false,
     builder: (BuildContext context) {
       return Dialog(
+        backgroundColor: Colors.white,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15),
         ),

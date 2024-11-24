@@ -59,7 +59,7 @@ class RegisterScreen extends StatelessWidget {
               children: [
                 Image.asset(
                   'assets/images/logo.png',
-                  width: 100,
+                  width: 150,
                 ),
                 const Text(
                   'SongkaeStay',

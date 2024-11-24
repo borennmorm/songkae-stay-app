@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:room_rental_app/features/settings/landlord/tenants/tenants_application_screen.dart';
 import 'package:room_rental_app/shared/widgets/dropdown/feature.dart';
 import 'package:room_rental_app/shared/widgets/dropdown/floor.dart';
 import 'package:room_rental_app/shared/widgets/dropdown/price.dart';
@@ -211,8 +212,7 @@ class _RoomScreenState extends State<RoomScreen> {
                           toggleCardSelection(
                               label); // Toggle card selection in select mode
                         } else {
-                          print(
-                              'Navigate to room details: $label'); // Navigate to another screen
+                          Get.to(() => TenantsApplicationScreen());
                         }
                       },
                       child: Stack(
@@ -286,7 +286,7 @@ class Filter extends StatelessWidget {
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
-        color: const Color(0xFF002352).withOpacity(0.3),
+        color: Colors.white,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -296,7 +296,6 @@ class Filter extends StatelessWidget {
             children: [
               const Text(
                 'Price',
-                style: TextStyle(color: Color(0xFF002352)),
               ),
               PriceDropdown(
                 prices: const ['All', '45', '50', '60', '75'],
@@ -312,7 +311,6 @@ class Filter extends StatelessWidget {
             children: [
               const Text(
                 'Floor',
-                style: TextStyle(color: Color(0xFF002352)),
               ),
               FloorDropdown(
                 floor: const ['All', '1', '2'],
@@ -328,7 +326,6 @@ class Filter extends StatelessWidget {
             children: [
               const Text(
                 'Feature',
-                style: TextStyle(color: Color(0xFF002352)),
               ),
               RoomFeatureDropdown(
                 roomFeature: const ['All', 'Air', 'Fan'],

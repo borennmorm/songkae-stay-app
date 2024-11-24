@@ -81,12 +81,38 @@ class HomeScreen extends StatelessWidget {
             Get.to(() => const MapOnSearchHome());
           },
         ),
-        IconButton(
-          icon: const Icon(Iconsax.notification, size: 23, color: Colors.white),
-          onPressed: () {
-            print("Notification tapped!");
-            Get.to(() => const NotificationScreen());
-          },
+        Stack(
+          clipBehavior: Clip
+              .none, // Ensure the badge overflows outside the icon if needed
+          children: [
+            IconButton(
+              icon: const Icon(Iconsax.notification,
+                  size: 23, color: Colors.white),
+              onPressed: () {
+                print("Notification tapped!");
+                Get.to(() => const NotificationScreen());
+              },
+            ),
+            Positioned(
+              right: 6,
+              top: 6,
+              child: Container(
+                padding: const EdgeInsets.all(4),
+                decoration: const BoxDecoration(
+                  color: Colors.red,
+                  shape: BoxShape.circle,
+                ),
+                child: const Text(
+                  '0',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 10,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
       ],
     );

@@ -60,11 +60,11 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
             label: 'User',
           ),
         ],
-        selectedItemColor: Colors.white,
+        selectedItemColor: const Color(0xFF002352),
         unselectedItemColor: Colors.grey,
         showUnselectedLabels: true,
         type: BottomNavigationBarType.fixed,
-        backgroundColor: const Color(0xFF002352).withOpacity(0.2),
+        backgroundColor: Colors.white,
       ),
     );
   }

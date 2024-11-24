@@ -35,7 +35,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: Routes.landlord_navigation,
+      initialRoute: Routes.tenant_navigation,
       getPages: Routes.pages,
     );
   }
