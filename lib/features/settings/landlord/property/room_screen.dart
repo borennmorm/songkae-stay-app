@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:latlong2/latlong.dart';
 import 'package:room_rental_app/features/settings/landlord/tenants/tenants_application_screen.dart';
-import 'package:room_rental_app/shared/widgets/dropdown/feature.dart';
-import 'package:room_rental_app/shared/widgets/dropdown/floor.dart';
-import 'package:room_rental_app/shared/widgets/dropdown/price.dart';
+import 'package:room_rental_app/features/settings/landlord/property/dropdown/feature.dart';
+import 'package:room_rental_app/features/settings/landlord/property/dropdown/floor.dart';
+import 'package:room_rental_app/features/settings/landlord/property/dropdown/price.dart';
 
 import 'add_room.dart';
 
@@ -105,7 +106,7 @@ class _RoomScreenState extends State<RoomScreen> {
       backgroundColor: const Color(0xFFF5F6F8),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Get.to(() => AddRoomScreen());
+          Get.to(() => const AddRoomScreen());
         },
         shape: const CircleBorder(),
         backgroundColor: Colors.white,
@@ -120,6 +121,37 @@ class _RoomScreenState extends State<RoomScreen> {
             const Filter(),
             const SizedBox(
               height: 10,
+            ),
+            Row(
+              children: [
+                Container(
+                  width: 15,
+                  height: 15,
+                  decoration: const BoxDecoration(
+                    color: Color(0xFF002352),
+                    shape: BoxShape.circle, // Correctly use BoxShape.circle
+                  ),
+                ),
+                const SizedBox(
+                  width: 5,
+                ),
+                const Text('Free'),
+                const SizedBox(
+                  width: 15,
+                ),
+                Container(
+                  width: 15,
+                  height: 15,
+                  decoration: const BoxDecoration(
+                    color: Colors.red,
+                    shape: BoxShape.circle,
+                  ),
+                ),
+                const SizedBox(
+                  width: 5,
+                ),
+                const Text('Taken')
+              ],
             ),
             // Help Bar
             if (selectMode)
@@ -212,7 +244,7 @@ class _RoomScreenState extends State<RoomScreen> {
                           toggleCardSelection(
                               label); // Toggle card selection in select mode
                         } else {
-                          Get.to(() => TenantsApplicationScreen());
+                          Get.to(() => const TenantsApplicationScreen());
                         }
                       },
                       child: Stack(
@@ -295,7 +327,7 @@ class Filter extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text(
-                'Price',
+                'Price (\$)',
               ),
               PriceDropdown(
                 prices: const ['All', '45', '50', '60', '75'],
@@ -325,10 +357,10 @@ class Filter extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text(
-                'Feature',
+                'Status',
               ),
               RoomFeatureDropdown(
-                roomFeature: const ['All', 'Air', 'Fan'],
+                roomFeature: const ['All', 'Free', 'Taken'],
                 initialValue: 'All',
                 onChanged: (selected) {
                   print("Selected floor: $selected");

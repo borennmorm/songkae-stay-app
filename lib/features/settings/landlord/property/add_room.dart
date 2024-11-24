@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:iconsax/iconsax.dart';
+import 'package:room_rental_app/shared/widgets/custom_button.dart';
 
 class AddRoomScreen extends StatefulWidget {
   const AddRoomScreen({super.key});
@@ -9,6 +11,7 @@ class AddRoomScreen extends StatefulWidget {
 
 class _AddRoomScreenState extends State<AddRoomScreen> {
   bool isChecked = false;
+  String selectedValue = "None";
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +20,7 @@ class _AddRoomScreenState extends State<AddRoomScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Add Room',
+          'Create Room',
           style: TextStyle(fontSize: 18),
         ),
         centerTitle: false,
@@ -42,56 +45,125 @@ class _AddRoomScreenState extends State<AddRoomScreen> {
         ),
       ),
       backgroundColor: const Color(0xFFF5F6F8),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-        child: Column(
-          children: [
-            MyTextField(
-              controller: titleController,
-              hintText: '50',
-              labelText: 'Room Price (\$)',
-              keyboardType: TextInputType.text,
-            ),
-            const SizedBox(height: 10),
-            MyTextField(
-              controller: titleController,
-              hintText: '1',
-              labelText: 'Floor',
-              keyboardType: TextInputType.number,
-            ),
-            const SizedBox(height: 10),
-            Row(
-              children: [
-                CustomCheckbox(
-                  value: isChecked,
-                  label: "Bed",
-                  onChanged: (newValue) {
-                    setState(() {
-                      isChecked = newValue ?? false;
-                    });
-                  },
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              MyTextField(
+                controller: titleController,
+                hintText: '50',
+                labelText: 'Room Price (\$)',
+                keyboardType: TextInputType.text,
+              ),
+              const SizedBox(height: 10),
+              MyTextField(
+                controller: titleController,
+                hintText: '1',
+                labelText: 'Floor',
+                keyboardType: TextInputType.number,
+              ),
+              const SizedBox(height: 10),
+              MyTextField(
+                controller: titleController,
+                hintText: '4 x 5',
+                labelText: 'Room Size',
+                suffix: Text('m²'),
+                keyboardType: TextInputType.text,
+              ),
+              const SizedBox(height: 10),
+              const Text('Select Tenent'),
+              Container(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(20),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.1),
+                      blurRadius: 5,
+                      spreadRadius: 2,
+                    ),
+                  ],
                 ),
-                CustomCheckbox(
-                  value: isChecked,
-                  label: "Bathroom",
-                  onChanged: (newValue) {
-                    setState(() {
-                      isChecked = newValue ?? false;
-                    });
-                  },
+                child: DropdownButtonHideUnderline(
+                  child: DropdownButton<String>(
+                    value: selectedValue,
+                    isExpanded: true,
+                    icon: const Icon(Iconsax.arrow_down_1,
+                        color: Color(0xFF002352)),
+                    items: const [
+                      DropdownMenuItem(
+                        value: "None",
+                        child: Text("None"),
+                      ),
+                      DropdownMenuItem(
+                        value: "John",
+                        child: Text("John"),
+                      ),
+                      DropdownMenuItem(
+                        value: "Dara",
+                        child: Text("Dara"),
+                      ),
+                      DropdownMenuItem(
+                        value: "Sovann",
+                        child: Text("Sovann"),
+                      ),
+                    ],
+                    onChanged: (value) {
+                      setState(() {
+                        selectedValue = value!;
+                      });
+                    },
+                    dropdownColor: Colors.white,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
                 ),
-                CustomCheckbox(
-                  value: isChecked,
-                  label: "Bathroom",
-                  onChanged: (newValue) {
-                    setState(() {
-                      isChecked = newValue ?? false;
-                    });
-                  },
-                ),
-              ],
-            )
-          ],
+              ),
+              const SizedBox(height: 10),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  CustomCheckbox(
+                    value: isChecked,
+                    label: "Bed",
+                    onChanged: (newValue) {
+                      setState(() {
+                        isChecked = newValue ?? false;
+                      });
+                    },
+                  ),
+                  CustomCheckbox(
+                    value: isChecked,
+                    label: "Bathroom",
+                    onChanged: (newValue) {
+                      setState(() {
+                        isChecked = newValue ?? false;
+                      });
+                    },
+                  ),
+                  CustomCheckbox(
+                    value: isChecked,
+                    label: "Parking",
+                    onChanged: (newValue) {
+                      setState(() {
+                        isChecked = newValue ?? false;
+                      });
+                    },
+                  ),
+                ],
+              ),
+              const SizedBox(height: 20),
+              FullWidthButton(
+                onPressed: () {},
+                text: 'Create',
+                color: const Color(0xFF002352),
+                textColor: Colors.white,
+              ),
+            ],
+          ),
         ),
       ),
     );

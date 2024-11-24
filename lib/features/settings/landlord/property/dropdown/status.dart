@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class PriceDropdown extends StatefulWidget {
+class StatusDropdown extends StatefulWidget {
   final List<String> prices;
   final String? initialValue;
   final ValueChanged<String?>? onChanged;
 
-  const PriceDropdown({
+  const StatusDropdown({
     super.key,
     required this.prices,
     this.initialValue,
@@ -13,10 +13,10 @@ class PriceDropdown extends StatefulWidget {
   });
 
   @override
-  _PriceDropdownState createState() => _PriceDropdownState();
+  _StatusDropdownState createState() => _StatusDropdownState();
 }
 
-class _PriceDropdownState extends State<PriceDropdown> {
+class _StatusDropdownState extends State<StatusDropdown> {
   String? selectedPrice;
 
   @override
@@ -29,7 +29,7 @@ class _PriceDropdownState extends State<PriceDropdown> {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(
-        horizontal: 10,
+        horizontal: 5,
       ),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -42,16 +42,16 @@ class _PriceDropdownState extends State<PriceDropdown> {
       child: DropdownButton<String>(
         value: selectedPrice,
         hint: const Text(
-          "Price",
+          "Room Status",
           style: TextStyle(
             fontSize: 15,
             color: Color(0xFF002352),
           ),
         ),
         items: widget.prices
-            .map((price) => DropdownMenuItem(
-                  value: price,
-                  child: Text('\$$price'),
+            .map((roomStatus) => DropdownMenuItem(
+                  value: roomStatus,
+                  child: Text('Status'),
                 ))
             .toList(),
         onChanged: (String? value) {
