@@ -8,7 +8,7 @@ import 'package:iconsax/iconsax.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:room_rental_app/features/booking/booking_screen.dart';
+import 'package:room_rental_app/features/home/room_detail/booking/booking_screen.dart';
 import 'package:room_rental_app/shared/widgets/custom_button.dart';
 
 /// Main screen for displaying room details
