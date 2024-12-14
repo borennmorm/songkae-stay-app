@@ -5,10 +5,9 @@ class CustomRoomCardColumn extends StatelessWidget {
   final String imageUrl;
   final String location;
   final String title;
-  final double rating;
   final String price;
   final double width;
-  final double height;
+  // final double height;
   final VoidCallback? onTap;
 
   const CustomRoomCardColumn({
@@ -16,10 +15,9 @@ class CustomRoomCardColumn extends StatelessWidget {
     required this.imageUrl,
     required this.location,
     required this.title,
-    required this.rating,
     required this.price,
-    this.width = 250.0,
-    this.height = 280.0,
+    this.width = 200.0,
+    // this.height = 150.0,
     this.onTap, // Add onTap callback
   });
 
@@ -27,7 +25,7 @@ class CustomRoomCardColumn extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: width,
-      height: height,
+      // height: height,
       child: GestureDetector(
         onTap: onTap, // Trigger the onTap callback when tapped
         child: Card(
@@ -47,7 +45,7 @@ class CustomRoomCardColumn extends StatelessWidget {
                     ),
                     child: Image.asset(
                       imageUrl,
-                      height: 180,
+                      height: 150,
                       width: double.infinity,
                       fit: BoxFit.cover,
                     ),
@@ -105,24 +103,6 @@ class CustomRoomCardColumn extends StatelessWidget {
                     const SizedBox(height: 4.0),
                     Row(
                       children: [
-                        const Icon(
-                          Icons.star,
-                          color: Colors.amber,
-                          size: 16.0,
-                        ),
-                        const SizedBox(width: 4.0),
-                        Text(
-                          rating.toString(),
-                          style: TextStyle(
-                            fontSize: 14.0,
-                            color: Colors.grey[600],
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 4.0),
-                    Row(
-                      children: [
                         Text(
                           price,
                           style: const TextStyle(
@@ -155,7 +135,6 @@ class CustomRoomCardRow extends StatelessWidget {
   final String imageUrl;
   final String title;
   final String location;
-  final double rating;
   final String price;
   final VoidCallback? onTap;
 
@@ -164,7 +143,6 @@ class CustomRoomCardRow extends StatelessWidget {
     required this.imageUrl,
     required this.title,
     required this.location,
-    required this.rating,
     required this.price,
     this.onTap,
   });
@@ -185,26 +163,26 @@ class CustomRoomCardRow extends StatelessWidget {
             children: [
               // Image section
               ClipRRect(
-                borderRadius: BorderRadius.circular(12.0),
+                borderRadius: BorderRadius.circular(10.0),
                 child: Image.asset(
                   imageUrl,
-                  width: 80,
-                  height: 80,
+                  width: 65,
+                  height: 65,
                   fit: BoxFit.cover,
                 ),
               ),
               const SizedBox(width: 10),
-
               // Text and icons section
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     // Title
                     Text(
                       title,
                       style: const TextStyle(
-                        fontSize: 16.0,
+                        fontSize: 15.0,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -224,26 +202,6 @@ class CustomRoomCardRow extends StatelessWidget {
                           style: const TextStyle(
                             color: Colors.black,
                             fontSize: 12.0,
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 4.0),
-
-                    // Rating and stars
-                    Row(
-                      children: [
-                        const Icon(
-                          Icons.star,
-                          color: Colors.amber,
-                          size: 16.0,
-                        ),
-                        const SizedBox(width: 4.0),
-                        Text(
-                          rating.toString(),
-                          style: const TextStyle(
-                            fontSize: 14.0,
-                            color: Colors.grey,
                           ),
                         ),
                       ],

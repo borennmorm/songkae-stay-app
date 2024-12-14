@@ -6,8 +6,8 @@ import 'package:room_rental_app/shared/widgets/custom_room_feature.dart';
 import 'package:room_rental_app/shared/widgets/property_infortmation.dart';
 import 'widget.dart';
 
-class PostDetail extends StatelessWidget {
-  const PostDetail({super.key});
+class RoomDetail extends StatelessWidget {
+  const RoomDetail({super.key});
 
   @override
   Widget build(BuildContext context) {

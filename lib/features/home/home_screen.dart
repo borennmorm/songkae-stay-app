@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:room_rental_app/features/home/post/post_detail.dart';
+import 'package:room_rental_app/features/home/room_detail/room_detail.dart';
 import 'package:room_rental_app/features/notification/notification_screen.dart';
-import 'package:room_rental_app/features/settings/profile_screen.dart';
-import 'package:room_rental_app/shared/widgets/custom_profile.dart';
 import '../Map/map_on_search_home.dart';
 import 'widgets/home_widget.dart';
 
@@ -15,31 +14,20 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _buildAppBar(),
-      body: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Color.fromARGB(218, 0, 36, 82),
-              Color.fromARGB(255, 230, 236, 241),
-            ],
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-          ),
-        ),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              SectionOne(
-                title: "All Popular Rooms",
-                fetchData: _fetchPopularRooms,
-              ),
-              const SizedBox(height: 15),
-              SectionTwo(
-                title: "More Rooms",
-                fetchData: _fetchMoreRooms,
-              ),
-            ],
-          ),
+      backgroundColor: Colors.grey[100],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SectionOne(
+              title: "All Popular Rooms",
+              fetchData: _fetchPopularRooms,
+            ),
+            const SizedBox(height: 15),
+            SectionTwo(
+              title: "More Rooms",
+              fetchData: _fetchMoreRooms,
+            ),
+          ],
         ),
       ),
     );
@@ -47,36 +35,20 @@ class HomeScreen extends StatelessWidget {
 
   AppBar _buildAppBar() {
     return AppBar(
-      backgroundColor: const Color.fromARGB(218, 0, 36, 82),
-      title: Row(
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              border: Border.all(color: Colors.white, width: 1.0),
-              boxShadow: const [
-                BoxShadow(
-                  color: Colors.black12,
-                  blurRadius: 2.0,
-                  spreadRadius: 1.0,
-                  offset: Offset(0, 1),
-                ),
-              ],
-            ),
-            child: ProfileImage(
-              imageUrl: 'https://i.postimg.cc/g25VYN7X/user-1.png',
-              onTap: () {
-                print('Profile image tapped!');
-                Get.to(() => const EditProfileScreen());
-              },
-            ),
-          ),
-        ],
+      backgroundColor: Colors.white,
+      title: ClipRRect(
+        child: SvgPicture.asset(
+          'assets/images/logo_blue.svg',
+          width: 35,
+          height: 35,
+          colorFilter: const ColorFilter.mode(Color(0xFF002352), BlendMode.srcIn),
+        ),
       ),
+      
       actions: [
         IconButton(
           icon:
-              const Icon(Iconsax.search_normal4, size: 23, color: Colors.white),
+              const Icon(Iconsax.search_normal4, size: 23,),
           onPressed: () {
             Get.to(() => const MapOnSearchHome());
           },
@@ -87,7 +59,7 @@ class HomeScreen extends StatelessWidget {
           children: [
             IconButton(
               icon: const Icon(Iconsax.notification,
-                  size: 23, color: Colors.white),
+                  size: 23,),
               onPressed: () {
                 print("Notification tapped!");
                 Get.to(() => const NotificationScreen());
@@ -127,7 +99,6 @@ class HomeScreen extends StatelessWidget {
         "imageUrl": 'assets/images/room.jpg',
         "location": 'Battambang, Cambodia',
         "title": 'Room Title $index',
-        "rating": 4.5,
         "price": '\$50',
       },
     );
@@ -142,7 +113,6 @@ class HomeScreen extends StatelessWidget {
         "imageUrl": 'assets/images/room.jpg',
         "location": 'Siem Reap, Cambodia',
         "title": 'Room Title $index',
-        "rating": 4.8,
         "price": '45',
       },
     );
@@ -196,10 +166,9 @@ class SectionOne extends StatelessWidget {
                       imageUrl: room['imageUrl'],
                       location: room['location'],
                       title: room['title'],
-                      rating: room['rating'],
                       price: room['price'],
                       onTap: () {
-                        Get.to(() => const PostDetail());
+                        Get.to(() => const RoomDetail());
                       },
                     ),
                   );
@@ -257,10 +226,9 @@ class SectionTwo extends StatelessWidget {
                   imageUrl: room['imageUrl'],
                   title: room['title'],
                   location: room['location'],
-                  rating: room['rating'],
                   price: room['price'],
                   onTap: () {
-                    Get.to(() => const PostDetail());
+                    Get.to(() => const RoomDetail());
                   },
                 );
               },
