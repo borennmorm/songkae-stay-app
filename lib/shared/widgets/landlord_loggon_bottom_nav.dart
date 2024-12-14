@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
+import 'package:room_rental_app/features/tenants/tenants_management_screen.dart';
 import 'package:room_rental_app/features/home/home_screen.dart';
-import 'package:room_rental_app/features/settings/landlord/dashboard_screen.dart';
+import 'package:room_rental_app/features/dashboard/landlord/dashboard_screen.dart';
 import 'package:room_rental_app/features/settings/landlord/setting_screen.dart';
+import 'package:room_rental_app/features/settings/tenant/setting_screen.dart';
 import 'package:room_rental_app/shared/widgets/custom_google_map.dart';
-import 'package:room_rental_app/features/rooms/rooms_screen.dart';
 
 class LandlordLoggonBottomNav extends StatefulWidget {
   const LandlordLoggonBottomNav({super.key});
@@ -26,9 +27,9 @@ class _LandlordLoggonBottomNavState extends State<LandlordLoggonBottomNav> {
   List<Widget> _buildScreens() {
     return [
       const HomeScreen(),
-      const RoomsScreen(),
-      const LandlordDashboardScreen(),
       const MapViews(),
+      const LandlordDashboardScreen(),
+      const TenantsManagementScreen(),
       const LandloardSettingsScreen(),
     ];
   }
@@ -42,8 +43,8 @@ class _LandlordLoggonBottomNavState extends State<LandlordLoggonBottomNav> {
         inactiveColorPrimary: Colors.grey,
       ),
       PersistentBottomNavBarItem(
-        icon: const Icon(Iconsax.key),
-        title: "Rooms",
+        icon: const Icon(Iconsax.map),
+        title: "Map",
         activeColorPrimary: const Color(0xFF002352),
         inactiveColorPrimary: Colors.grey,
       ),
@@ -54,10 +55,12 @@ class _LandlordLoggonBottomNavState extends State<LandlordLoggonBottomNav> {
         inactiveColorPrimary: Colors.grey,
         activeColorSecondary: Colors.white,
         inactiveColorSecondary: Colors.white,
+        contentPadding: 10,
+        
       ),
       PersistentBottomNavBarItem(
-        icon: const Icon(Iconsax.map),
-        title: "Map",
+        icon: const Icon(Iconsax.user),
+        title: "Tenants",
         activeColorPrimary: const Color(0xFF002352),
         inactiveColorPrimary: Colors.grey,
       ),

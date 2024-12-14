@@ -4,7 +4,6 @@ import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 import 'package:room_rental_app/features/auth/login.dart';
 import 'package:room_rental_app/features/home/home_screen.dart';
 import 'package:room_rental_app/features/notification/notification_screen.dart';
-import 'package:room_rental_app/features/rooms/rooms_screen.dart';
 import 'package:room_rental_app/features/settings/profile_screen.dart';
 
 class CustomBottomNavigationBar extends StatefulWidget {
@@ -27,7 +26,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
   List<Widget> _buildScreens() {
     return [
       const HomeScreen(),
-      const RoomsScreen(),
+      // const RoomsScreen(),
       const LoginScreen(),
       const NotificationScreen(),
       const EditProfileScreen(),

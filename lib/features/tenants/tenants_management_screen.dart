@@ -18,7 +18,7 @@ class _TenantsManagementScreenState extends State<TenantsManagementScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Tenants Management',
+          'Tenants',
           style: TextStyle(
             fontSize: 18,
           ),
@@ -27,23 +27,7 @@ class _TenantsManagementScreenState extends State<TenantsManagementScreen> {
         automaticallyImplyLeading: true,
         backgroundColor: const Color(0xFFF5F6F8),
         elevation: 0,
-        leading: GestureDetector(
-          onTap: () {
-            Navigator.pop(context);
-          },
-          child: Container(
-            margin: const EdgeInsets.all(8.0),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: const Color(0xFF002352).withOpacity(0.3),
-              shape: BoxShape.rectangle,
-            ),
-            child: const Icon(
-              Icons.arrow_back,
-              color: Color(0xFF002352),
-            ),
-          ),
-        ),
+        
       ),
       backgroundColor: const Color(0xFFF5F6F8),
       body: Padding(
@@ -243,7 +227,7 @@ class TenantCard extends StatelessWidget {
                             children: [
                               // Regular text before the number
                               TextSpan(
-                                text: 'Room: ',
+                                text: 'Room ID: ',
                                 style: TextStyle(
                                   color: Colors.black,
                                 ),
@@ -279,7 +263,7 @@ class TenantCard extends StatelessWidget {
                             children: [
                               // Regular text before the number
                               TextSpan(
-                                text: 'Property: ',
+                                text: 'Property ID: ',
                                 style: TextStyle(
                                   color: Colors.black,
                                 ),

@@ -5,15 +5,12 @@ import 'package:iconsax/iconsax.dart';
 import 'booking/booking_screen.dart';
 import 'invoice/invoice_screen.dart';
 import 'property/properties_screen.dart';
-import 'tenants/tenants_management_screen.dart';
 
 class LandlordDashboardScreen extends StatelessWidget {
   const LandlordDashboardScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -24,22 +21,6 @@ class LandlordDashboardScreen extends StatelessWidget {
         automaticallyImplyLeading: true,
         backgroundColor: const Color(0xFFF5F6F8),
         elevation: 0,
-        leading: GestureDetector(
-          onTap: () {
-            Navigator.pop(context);
-          },
-          child: Container(
-            margin: const EdgeInsets.all(8.0),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: const Color(0xFF002352).withOpacity(0.3),
-            ),
-            child: const Icon(
-              Icons.arrow_back,
-              color: Color(0xFF002352),
-            ),
-          ),
-        ),
       ),
       backgroundColor: const Color(0xFFF5F6F8),
       body: Padding(
@@ -92,65 +73,47 @@ class LandlordDashboardScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 10),
-            // Row of Cards
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                // Property Button
-                Flexible(
-                  flex: 1,
-                  child: Cards(
-                    icon: Iconsax.home_1,
-                    onTap: () {
-                      Get.to(() => const PropertyScreen());
-                    },
-                    text: 'Properties',
-                    screenWidth: screenWidth,
+            // Row of Cards - Fixed height, expanded width
+            SizedBox(
+              height: 80, // Fixed height for the cards
+              child: Row(
+                children: [
+                  // Property Button
+                  Expanded(
+                    child: Cards(
+                      icon: Iconsax.home_1,
+                      onTap: () {
+                        Get.to(() => const PropertyScreen());
+                      },
+                      text: 'Properties',
+                    ),
                   ),
-                ),
-                const SizedBox(width: 10),
-                // Tenants Button
-                Flexible(
-                  flex: 1,
-                  child: Cards(
-                    icon: Iconsax.user,
-                    onTap: () {
-                      Get.to(() => const TenantsManagementScreen());
-                    },
-                    text: 'Tenants',
-                    screenWidth: screenWidth,
+                  const SizedBox(width: 10),
+                  // Invoice Button
+                  Expanded(
+                    child: Cards(
+                      icon: Iconsax.check,
+                      onTap: () {
+                        Get.to(() => const InvoiceScreen());
+                      },
+                      text: 'Invoice',
+                    ),
                   ),
-                ),
-                const SizedBox(width: 10),
-                // Invoice Button
-                Flexible(
-                  flex: 1,
-                  child: Cards(
-                    icon: Iconsax.check,
-                    onTap: () {
-                      // Invoice screen
-                      Get.to(() => const InvoiceScreen());
-                    },
-                    text: 'Invoice',
-                    screenWidth: screenWidth,
+                  const SizedBox(width: 10),
+                  // Booking Button
+                  Expanded(
+                    child: Cards(
+                      icon: Iconsax.calendar,
+                      onTap: () {
+                        Get.to(() => const BookingScreen());
+                      },
+                      text: 'Booking',
+                    ),
                   ),
-                ),
-                const SizedBox(width: 10),
-                // Booking Button
-                Flexible(
-                  flex: 1,
-                  child: Cards(
-                    icon: Iconsax.calendar,
-                    onTap: () {
-                      // Booking screen
-                      Get.to(() => const BookingScreen());
-                    },
-                    text: 'Booking',
-                    screenWidth: screenWidth,
-                  ),
-                ),
-              ],
+                ],
+              ),
             ),
+            const Spacer(), // This will push the cards to the top
           ],
         ),
       ),
@@ -162,25 +125,19 @@ class Cards extends StatelessWidget {
   final IconData? icon;
   final Function()? onTap;
   final String text;
-  final double screenWidth;
 
   const Cards({
     super.key,
     required this.icon,
     this.onTap,
     required this.text,
-    required this.screenWidth,
   });
 
   @override
   Widget build(BuildContext context) {
-    final cardWidth = (screenWidth - 60) / 4;
-
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: cardWidth,
-        height: cardWidth * 0.9,
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
@@ -199,12 +156,15 @@ class Cards extends StatelessWidget {
             Icon(
               icon,
               color: Colors.black,
-              size: cardWidth * 0.4,
+              size: 32,
             ),
             const SizedBox(height: 8),
             Text(
               text,
-              style: TextStyle(fontSize: cardWidth * 0.15),
+              style: const TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.w500,
+              ),
               textAlign: TextAlign.center,
             ),
           ],
@@ -230,36 +190,51 @@ class Overviews extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 10),
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(15),
+      margin: const EdgeInsets.only(bottom: 10),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(
+          color: Colors.grey.withOpacity(0.1),
+        ),
+      ),
       child: Row(
         children: [
+          // Icon Container with solid color background
           Container(
             width: 50,
             height: 50,
             decoration: BoxDecoration(
-              color: color,
+              color: color, // Solid color background
               borderRadius: BorderRadius.circular(10),
             ),
             child: Icon(
               icons,
-              color: Colors.white,
+              color: Colors.white, // White icon
+              size: 24,
             ),
           ),
-          const SizedBox(width: 10),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(titleText),
-              Text(
-                number,
-                style: const TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              )
-            ],
-          )
+          const SizedBox(width: 15),
+          // Title
+          Text(
+            titleText,
+            style: const TextStyle(
+              fontSize: 14,
+              color: Colors.black,
+            ),
+          ),
+          const Spacer(),
+          // Number
+          Text(
+            number,
+            style: const TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
         ],
       ),
     );

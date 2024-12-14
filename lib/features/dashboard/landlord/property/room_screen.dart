@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:latlong2/latlong.dart';
-import 'package:room_rental_app/features/settings/landlord/tenants/tenants_application_screen.dart';
-import 'package:room_rental_app/features/settings/landlord/property/dropdown/feature.dart';
-import 'package:room_rental_app/features/settings/landlord/property/dropdown/floor.dart';
-import 'package:room_rental_app/features/settings/landlord/property/dropdown/price.dart';
+import 'package:room_rental_app/features/tenants/tenants_application_screen.dart';
+import 'package:room_rental_app/features/dashboard/landlord/property/dropdown/feature.dart';
+import 'package:room_rental_app/features/dashboard/landlord/property/dropdown/floor.dart';
+import 'package:room_rental_app/features/dashboard/landlord/property/dropdown/price.dart';
 
 import 'add_room.dart';
 

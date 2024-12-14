@@ -11,7 +11,7 @@ import '../account_type_screen.dart';
 import '../privacy_policy.dart';
 import '../terms_conditions.dart';
 import '../language_screen.dart';
-import 'dashboard_screen.dart';
+import '../../dashboard/landlord/dashboard_screen.dart';
 
 class LandloardSettingsScreen extends StatelessWidget {
   const LandloardSettingsScreen({super.key});
@@ -42,13 +42,6 @@ class LandloardSettingsScreen extends StatelessWidget {
                         fontSize: 17,
                         fontWeight: FontWeight.bold,
                       ),
-                    ),
-                    _buildSettingsOption(
-                      icon: Iconsax.category, // Updated icon
-                      text: 'Dashboard',
-                      onTap: () {
-                        Get.to(() => const LandlordDashboardScreen());
-                      },
                     ),
 
                     _buildSettingsOption(
