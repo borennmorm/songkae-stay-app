@@ -9,7 +9,7 @@ class Routes {
   static List<GetPage> pages = [
     GetPage(
       name: default_navigation,
-      page: () => const LandlordLoggedInNav(),
+      page: () => const LandlordLoggonBottomNav(),
     ),
     GetPage(
       name: login,

@@ -7,7 +7,7 @@ class CustomRoomCardColumn extends StatelessWidget {
   final String title;
   final String price;
   final double width;
-  // final double height;
+  final double height;
   final VoidCallback? onTap;
 
   const CustomRoomCardColumn({
@@ -17,7 +17,7 @@ class CustomRoomCardColumn extends StatelessWidget {
     required this.title,
     required this.price,
     this.width = 200.0,
-    // this.height = 150.0,
+    this.height = 150.0,
     this.onTap, // Add onTap callback
   });
 
@@ -25,7 +25,6 @@ class CustomRoomCardColumn extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: width,
-      // height: height,
       child: GestureDetector(
         onTap: onTap, // Trigger the onTap callback when tapped
         child: Card(
@@ -45,7 +44,7 @@ class CustomRoomCardColumn extends StatelessWidget {
                     ),
                     child: Image.asset(
                       imageUrl,
-                      height: 150,
+                      height: 180,
                       width: double.infinity,
                       fit: BoxFit.cover,
                     ),
@@ -79,14 +78,7 @@ class CustomRoomCardColumn extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const Positioned(
-                    top: 8,
-                    right: 8,
-                    child: Icon(
-                      Iconsax.heart,
-                      color: Colors.white,
-                    ),
-                  ),
+                  
                 ],
               ),
               Padding(
@@ -98,24 +90,44 @@ class CustomRoomCardColumn extends StatelessWidget {
                       title,
                       style: const TextStyle(
                         fontSize: 15.0,
+                        fontWeight: FontWeight.bold,
                       ),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
                     ),
                     const SizedBox(height: 4.0),
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
-                          price,
-                          style: const TextStyle(
-                            fontSize: 16.0,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.red,
-                          ),
+                        Row(
+                          children: [
+                            Text(
+                              '\$$price',
+                              style: const TextStyle(
+                                fontSize: 18.0,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.red,
+                              ),
+                            ),
+                            const Text(
+                              '/month',
+                              style: TextStyle(
+                                fontSize: 14.0,
+                                color: Colors.grey,
+                              ),
+                            ),
+                          ],
                         ),
-                        const Text(
-                          ' | month',
-                          style: TextStyle(
-                            fontSize: 13.0,
-                            color: Colors.black,
+                        Container(
+                          padding: const EdgeInsets.all(8.0),
+                          decoration: BoxDecoration(
+                            color: Colors.grey.withOpacity(0.1),
+                            shape: BoxShape.circle,
+                          ),
+                          child: const Icon(
+                            Iconsax.heart,
+                            color: Colors.grey,
+                            size: 20,
                           ),
                         ),
                       ],

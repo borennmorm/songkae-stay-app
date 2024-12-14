@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:room_rental_app/features/chat/message_screen.dart';
 
 class BookingScreen extends StatelessWidget {
   const BookingScreen({super.key});
@@ -145,7 +144,7 @@ class BookingCard extends StatelessWidget {
                     icon: Iconsax.message,
                     onPressed: () {
                       print("message, hello!!!");
-                      Get.to(() => const MessagesScreen());
+                      // Get.to(() => const MessagesScreen());
                     },
                   ),
                   _buildActionIcon(

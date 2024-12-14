@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:room_rental_app/features/chat/chat_screen.dart';
 import 'package:room_rental_app/features/home/home_screen.dart';
 import 'package:room_rental_app/features/settings/tenant/setting_screen.dart';
 import 'package:room_rental_app/shared/widgets/custom_google_map.dart';
@@ -19,7 +18,7 @@ class _TenantLoggonBottomNavState extends State<TenantLoggonBottomNav> {
   final List<Widget> _pages = [
     const HomeScreen(),
     const MapViews(),
-    const ChatScreen(),
+    // const ChatScreen(),
     const TenantSettingsScreen(),
   ];
 
